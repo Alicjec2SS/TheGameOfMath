@@ -1,0 +1,192 @@
+[gd_scene load_steps=12 format=3 uid="uid://cng13403pftyj"]
+
+[ext_resource type="Script" path="res://scripts/globals/battle.gd" id="1_p3x22"]
+[ext_resource type="FontFile" uid="uid://csfxe4gpjf0nh" path="res://fonts/superstar_memesbruh03.ttf" id="1_t8wh6"]
+[ext_resource type="Texture2D" uid="uid://c1m4xdx2rdl37" path="res://assets/UI/send.png" id="3_d4cqq"]
+[ext_resource type="Texture2D" uid="uid://dxm750fthk86h" path="res://assets/UI/RedHeart.png" id="4_4w6gv"]
+[ext_resource type="Texture2D" uid="uid://b3g8xxswrq1em" path="res://assets/UI/BlackHeart.png" id="5_4rf5i"]
+[ext_resource type="Texture2D" uid="uid://bmch236mq284p" path="res://assets/UI/1.png" id="6_xxt13"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4flo"]
+bg_color = Color(0.525101, 0.525101, 0.525101, 1)
+
+[sub_resource type="Theme" id="Theme_kvfhf"]
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_n4flo")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atst5"]
+atlas = ExtResource("4_4w6gv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixgy1"]
+atlas = ExtResource("5_4rf5i")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkr6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atst5")
+}],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixgy1")
+}],
+"loop": true,
+"name": &"died",
+"speed": 5.0
+}]
+
+[node name="Battle" type="CanvasLayer"]
+script = ExtResource("1_p3x22")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_top = 437.0
+offset_right = 1152.0
+offset_bottom = 654.0
+theme = SubResource("Theme_kvfhf")
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="chatBoxBackground" type="ColorRect" parent="."]
+visible = false
+offset_top = -6.0
+offset_right = 1152.0
+offset_bottom = 156.0
+theme = SubResource("Theme_kvfhf")
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="QuestionBox" type="RichTextLabel" parent="."]
+offset_left = 546.0
+offset_top = 447.0
+offset_right = 961.0
+offset_bottom = 514.0
+theme_override_fonts/normal_font = ExtResource("1_t8wh6")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[left]skibidi dop dop dop yes yes
+skibidi dop dop yes yes[/left]"
+autowrap_mode = 1
+
+[node name="AnswerBox" type="LineEdit" parent="."]
+offset_left = 414.0
+offset_top = 509.0
+offset_right = 960.0
+offset_bottom = 616.0
+theme_override_fonts/font = ExtResource("1_t8wh6")
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Your answer is:"
+secret_character = "*"
+
+[node name="SumbitButton" type="Button" parent="."]
+offset_left = 974.0
+offset_top = 471.0
+offset_right = 1103.0
+offset_bottom = 598.0
+rotation = -0.350594
+icon = ExtResource("3_d4cqq")
+flat = true
+expand_icon = true
+
+[node name="SupportTexts" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SupportText1" type="Label" parent="SupportTexts"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 448.0
+offset_right = 537.0
+offset_bottom = 479.0
+theme_override_fonts/font = ExtResource("1_t8wh6")
+theme_override_font_sizes/font_size = 30
+text = "Question:"
+
+[node name="SupportText4" type="Label" parent="SupportTexts"]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 455.0
+offset_right = 357.0
+offset_bottom = 486.0
+theme_override_fonts/font = ExtResource("1_t8wh6")
+theme_override_font_sizes/font_size = 30
+text = "turn"
+horizontal_alignment = 1
+
+[node name="SupportText2" type="Label" parent="SupportTexts"]
+layout_mode = 0
+offset_left = 986.0
+offset_top = 575.0
+offset_right = 1130.0
+offset_bottom = 626.0
+theme_override_fonts/font = ExtResource("1_t8wh6")
+theme_override_font_sizes/font_size = 50
+text = "SUBMIT"
+
+[node name="SupportText3" type="Label" parent="SupportTexts"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 452.0
+offset_right = 159.0
+offset_bottom = 491.0
+theme_override_fonts/font = ExtResource("1_t8wh6")
+theme_override_font_sizes/font_size = 38
+text = "Health"
+
+[node name="Hearts" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="A1" type="AnimatedSprite2D" parent="Hearts"]
+position = Vector2(58, 535)
+sprite_frames = SubResource("SpriteFrames_jkr6q")
+animation = &"alive"
+
+[node name="A3" type="AnimatedSprite2D" parent="Hearts"]
+position = Vector2(104, 592)
+sprite_frames = SubResource("SpriteFrames_jkr6q")
+animation = &"alive"
+
+[node name="A2" type="AnimatedSprite2D" parent="Hearts"]
+position = Vector2(154, 535)
+sprite_frames = SubResource("SpriteFrames_jkr6q")
+animation = &"alive"
+
+[node name="ChatBox" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 87.0
+offset_top = 18.0
+offset_right = 1054.0
+offset_bottom = 125.0
+theme_override_fonts/normal_font = ExtResource("1_t8wh6")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]hello[/center]"
+
+[node name="Background2" type="TextureRect" parent="."]
+modulate = Color(0.465867, 0.69599, 0.644924, 1)
+offset_left = 228.0
+offset_top = 475.0
+offset_right = 369.0
+offset_bottom = 615.0
+texture = ExtResource("6_xxt13")
+expand_mode = 1
+
+[node name="Turn" type="Label" parent="."]
+modulate = Color(0.90943, 0.46302, 0.220729, 1)
+offset_left = 274.0
+offset_top = 506.0
+offset_right = 322.0
+offset_bottom = 586.0
+theme_override_fonts/font = ExtResource("1_t8wh6")
+theme_override_font_sizes/font_size = 80
+text = "1"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="SumbitButton" to="." method="_on_sumbit_button_pressed"]

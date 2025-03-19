@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/globals/player/playerData.gd" id="1_hmmkv"]
+
+[resource]
+script = ExtResource("1_hmmkv")
+position = Vector2(116.877, 111.295)
+current_map_path = "res://scenes/levels/level1.tscn"
+money = 248
+defeated_ID_player = [911]
+HP = 3
+EXP = 23247

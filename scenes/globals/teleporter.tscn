@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs1cxj8dle53c"]
+
+[ext_resource type="Script" path="res://scripts/globals/teleporter.gd" id="1_s5gyf"]
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(1, 1.0045)
+script = ExtResource("1_s5gyf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

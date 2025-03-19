@@ -1,0 +1,38 @@
+extends Node
+
+signal complete_save_game
+signal complete_load_game
+
+var can_move = true
+var is_interacting
+var game_data
+var is_changed_map_via_json = false
+var is_game_data_modified = false  # Cờ theo dõi nếu dữ liệu bị thay đổi
+
+
+#test paths
+var save_folder_path = "res://user/"
+var save_file = "testsave.tres"
+var playerData = PlayerData.new()
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_game_data()
+		get_tree().quit() # default behavior
+
+func save_game_data():
+	ResourceSaver.save(playerData, save_folder_path + save_file)
+	print("Data saved!")
+
+func load_game_data():
+	playerData = ResourceLoader.load(save_folder_path + save_file).duplicate(true)
+	print("Data loaded complete!")
+
+func _ready():
+	get_tree().set_auto_accept_quit(false)
+	
+	load_game_data()
+	Transporter.change_scene(playerData.current_map_path,playerData.position)
+	
+
+
