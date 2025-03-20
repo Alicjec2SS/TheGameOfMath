@@ -411,9 +411,9 @@ bbcode_enabled = true
 
 [node name="SupportText" type="Label" parent="."]
 visible = false
-offset_left = 206.0
+offset_left = 182.0
 offset_top = 466.0
-offset_right = 328.0
+offset_right = 304.0
 offset_bottom = 497.0
 theme_override_fonts/font = ExtResource("1_w2x51")
 theme_override_font_sizes/font_size = 30

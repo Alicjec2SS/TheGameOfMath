@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://24dhlgvx68rc"]
+[gd_scene load_steps=13 format=3 uid="uid://24dhlgvx68rc"]
 
 [ext_resource type="Script" path="res://scripts/Worlds_Setups/level1.gd" id="1_r75s2"]
 [ext_resource type="PackedScene" uid="uid://cfxf1cnegipmh" path="res://scenes/globals/player.tscn" id="2_2bdas"]
@@ -6,8 +6,50 @@
 [ext_resource type="PackedScene" uid="uid://cs1cxj8dle53c" path="res://scenes/globals/teleporter.tscn" id="4_y27v5"]
 [ext_resource type="PackedScene" uid="uid://cfd43qfnlbay6" path="res://scenes/things/game_machine.tscn" id="5_wjwhu"]
 [ext_resource type="PackedScene" uid="uid://b6oivl72378u4" path="res://scenes/things/NPCs/just_standing_npc.tscn" id="6_d8wpi"]
+[ext_resource type="PackedScene" uid="uid://g487gpbtaq4s" path="res://scenes/things/NPCs/active_character.tscn" id="7_bmna2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unjni"]
+
+[sub_resource type="Curve2D" id="Curve2D_idb82"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 49)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_x3y5t"]
+resource_name = "go"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+
+[sub_resource type="Animation" id="Animation_2edml"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wkp03"]
+_data = {
+"RESET": SubResource("Animation_2edml"),
+"go": SubResource("Animation_x3y5t")
+}
 
 [node name="level1" type="Node2D"]
 y_sort_enabled = true
@@ -57,3 +99,31 @@ after_battle_dialog_tree = "testCharacter1"
 is_battle = true
 health = 9
 levelQuest = 5
+
+[node name="Char1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_idb82")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Char1"]
+position = Vector2(0, -1)
+rotation = 1.5708
+loop = false
+
+[node name="ActiveCharacter" parent="Char1/PathFollow2D" node_paths=PackedStringArray("go_anim_play") instance=ExtResource("7_bmna2")]
+position = Vector2(-13, 1)
+rotation = -1.58838
+dialog_tree = "testCharacter1"
+can_be_moving = true
+go_anim_play = NodePath("../../AnimationPlayer")
+time_to_go = 3.0
+is_battle = true
+battle_ID_self = 172
+levelQuest = 3
+
+[node name="RayCast2D" type="RayCast2D" parent="Char1/PathFollow2D/ActiveCharacter"]
+target_position = Vector2(-0.318714, 75.006)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Char1"]
+root_node = NodePath("../PathFollow2D")
+libraries = {
+"": SubResource("AnimationLibrary_wkp03")
+}

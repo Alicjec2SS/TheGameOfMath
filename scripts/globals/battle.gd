@@ -97,7 +97,7 @@ func _process(delta):
 				bf_game_dialog_doned = true
 				question_obj = levelQuest.new()
 				answer = question_obj.expression[1]
-				infoTextBox.text = question_obj.expression[0]
+				infoTextBox.text = "[center]"+question_obj.expression[0]+"[/center]"
 				$Animation.play("end_text_box")
 				await get_tree().create_timer(1).timeout
 				$Animation.play("start")
@@ -264,7 +264,7 @@ func _on_button_pressed():
 	
 	question_obj = levelQuest.new()
 	answer = question_obj.expression[1]
-	infoTextBox.text = question_obj.expression[0]
+	infoTextBox.text = "[center]"+question_obj.expression[0]+"[/center]"
 	turn += 1
 	
 	$Button.disabled = false
