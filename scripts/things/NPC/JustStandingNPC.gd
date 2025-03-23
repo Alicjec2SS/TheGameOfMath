@@ -36,6 +36,7 @@ func exit_dialog(arg: String):
 				battle_scene.money = money
 				battle_scene.level_question = levelQuest
 				battle_scene.show()
+
 				
 
 func interact():

@@ -11,3 +11,5 @@ class_name PlayerData
 #số lượng tim của người chơi hiện có:
 @export var HP = 3 #mới đầu sẽ là 0
 @export var EXP = 0
+@export var LVL = 1
+@export var name = "Alice"

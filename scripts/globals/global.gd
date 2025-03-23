@@ -34,5 +34,6 @@ func _ready():
 	load_game_data()
 	Transporter.change_scene(playerData.current_map_path,playerData.position)
 	
-
+func _process(delta):	
+	playerData.LVL = int(floor(pow(float(playerData.EXP) / 100, 1.0 / 2)))
 

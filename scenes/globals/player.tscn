@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://cfxf1cnegipmh"]
+[gd_scene load_steps=125 format=3 uid="uid://cfxf1cnegipmh"]
 
 [ext_resource type="Script" path="res://scripts/globals/player/player.gd" id="1_7xpw6"]
 [ext_resource type="Texture2D" uid="uid://d358qysxygie4" path="res://assets/Player/Idle/idle.png" id="1_te68o"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://scripts/globals/player/InteractFinder.gd" id="15_j3hyj"]
 [ext_resource type="PackedScene" uid="uid://cng13403pftyj" path="res://scenes/globals/battle.tscn" id="16_pdb22"]
 [ext_resource type="PackedScene" uid="uid://c4i31uqt0chg8" path="res://scenes/globals/training.tscn" id="18_m8jbn"]
+[ext_resource type="PackedScene" uid="uid://btfm0jvappjly" path="res://scenes/globals/ui.tscn" id="19_cujy5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhmxt"]
 
@@ -915,11 +916,14 @@ script = ExtResource("15_j3hyj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractFinder"]
 shape = SubResource("CircleShape2D_2apa8")
 
-[node name="Battle" parent="." instance=ExtResource("16_pdb22")]
+[node name="Battle" parent="." node_paths=PackedStringArray("UI") instance=ExtResource("16_pdb22")]
 visible = false
+UI = NodePath("../UI")
 
 [node name="Training" parent="." instance=ExtResource("18_m8jbn")]
 level_question = 5
+
+[node name="UI" parent="." instance=ExtResource("19_cujy5")]
 
 [connection signal="body_entered" from="InteractFinder" to="InteractFinder" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractFinder" to="InteractFinder" method="_on_body_exited"]

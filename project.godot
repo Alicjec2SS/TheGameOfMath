@@ -29,6 +29,9 @@ directories/dtl_directory={
 "testCharacter1": "res://Dialogs/TestCharacters/testCharacter1.dtl"
 }
 glossary/default_case_sensitive=true
+variables={
+"Var": ""
+}
 
 [display]
 

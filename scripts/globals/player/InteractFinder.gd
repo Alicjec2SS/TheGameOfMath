@@ -7,7 +7,6 @@ func cssort(enti1,enti2):
 	var e2 = $"..".global_position.distance_to(enti2.global_position)
 	return e1 < e2
 
-
 func _process(_delta):
 	if Input.is_action_just_pressed("interact") and len(entities_in_interacts_area) > 0 and !global.is_interacting:
 		entities_in_interacts_area.sort_custom(cssort)

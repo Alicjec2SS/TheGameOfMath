@@ -19,7 +19,7 @@ var heart_left = global.playerData.HP #= 3 -  số câu hỏi mà thằng user �
 @export var opponent_health = 3 # mặc định là 3. Đây là máu của thằng đối thủ
 @export var EXP = 0
 @export var money = 0
-
+@export var UI:CanvasLayer
 
 @export var level_question = 1
 var levelQuest
@@ -207,13 +207,16 @@ func _on_button_pressed():
 		if len(answer) >= 2 :#cụ thể là 2
 			chatBox.text = "[center]The correct answer were " + str(answer[0]) + " or " + str(answer[1])
 		else:
-			chatBox.text = "[center]The correct answer was " + str(answer) + "[/center]"
+			chatBox.text = "[center]The correct answer was " + str(answer[0]) + "[/center]"
 		await get_tree().create_timer(3).timeout
 		chatBox.hide()
 		$Animation.play("end_text_box")
 		await get_tree().create_timer(1).timeout
 		if heart_left <= 0:
 			print("You lose. Stupid")
+			UI.get_node("Mini/anim").play("death")
+			await get_tree().create_timer(1).timeout
+			UI.get_node("Mini/anim").play("die")
 			# setup lại cho lần sau:
 			heart_left = global.playerData.HP
 			opponent_health = 999
@@ -245,6 +248,7 @@ func _on_button_pressed():
 			global.playerData.money -= payout
 			
 			$"../Transition".play("fade_in")
+			UI.get_node("anim").play("end")
 			await get_tree().create_timer(1).timeout
 
 			global.can_move = true
