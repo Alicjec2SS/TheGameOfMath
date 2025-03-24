@@ -15,11 +15,14 @@ var turn = 1
 @export var opponentID = 0 
 var index_of_text = 0
 var question_obj
-var heart_left = global.playerData.HP #= 3 -  số câu hỏi mà thằng user đần độn đã làm sai  = số mạng mà thằng user ngu dốt còn lại
+@export var heart_left = 1 #= 3 -  số câu hỏi mà thằng user đần độn đã làm sai  = số mạng mà thằng user ngu dốt còn lại
 @export var opponent_health = 3 # mặc định là 3. Đây là máu của thằng đối thủ
 @export var EXP = 0
 @export var money = 0
 @export var UI:CanvasLayer
+
+#effect id: từ 1 -> 6
+@export var effect_id = 1
 
 @export var level_question = 1
 var levelQuest
@@ -31,7 +34,16 @@ var bf_game_dialog_doned = false
 signal skip_emitted 
 				
 
+#hiệu ứng:
+#skill cấp 4:miến bị thương 1 lần 
 
+#biến:
+var is_totem_available = false
+
+#hiệu ứng: x2 damage nhưng 1 lần thua là nắm
+
+#biến:
+var x2damage = false
 
 func hide_all():
 	$PlayerContainer.hide()
@@ -53,6 +65,7 @@ func _ready():
 			levelQuest = QuestGenerator.Level5
 		6:
 			levelQuest = QuestGenerator.Level6
+
 	game_ended = false
 	bf_game_dialog_doned = false 
 	global.can_move = false
@@ -71,10 +84,21 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
+	if effect_id == 3 and heart_left > 0:#hiệu ứng: x2 damage nhưng 1 lần thua là nắm
+		heart_left = 1
+		x2damage = true
 	if not self.visible:
 		global.can_move = true
 		global.is_interacting = false
+		if effect_id == 4:#miễn thương
+			is_totem_available = true
+		elif effect_id == 3:#hiệu ứng: x2 damage nhưng 1 lần thua là nắm
+			heart_left = 1
+			x2damage = true
+		else:
+			is_totem_available = false
+			x2damage = false
+		
 		return
 	else:
 		$OpponentContainer/OpponentHealth.text = "x" + str(opponent_health)
@@ -128,11 +152,14 @@ func _on_button_pressed():
 	answerBox.clear()
 	if userAnswer in answer:
 		print("You did correct")
-		opponent_health -= 1
+		if x2damage:
+			opponent_health -= 2
+		else:
+			opponent_health -= 1
 		#await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
 		if opponent_health == 1:
 			$OpponentContainer/OpponentHealth.hide()
-		elif opponent_health == 0:
+		elif opponent_health <= 0:
 			$OpponentContainer/OpponentHearts2.play("died")
 		else:
 			$OpponentContainer/OpponentHealth.text = "x" + str(opponent_health)
@@ -191,16 +218,31 @@ func _on_button_pressed():
 		print("Incorrect")
 		# bắt đầu quy trình trừ điểm:
 		playerCamera.add_trauma(0.5)
-		heart_left -= 1
+		
 		#await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
-		if opponent_health == 1:
-			$PlayerContainer/Health.hide()
-		elif opponent_health == 0:
-			$PlayerContainer/PlayerHeart.play("died")
+		if is_totem_available:
+			is_totem_available = false
+			print("totem")
+			await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
+			$Animation.play("end")
+			await get_tree().create_timer(1).timeout
+			chatBox.text = "[center]Totem saved you[/center]"
+			chatBox.show()
+			$Animation.play("start_text_box")
+			await get_tree().create_timer(3).timeout
+			$Animation.play("end_text_box")
+			await get_tree().create_timer(1).timeout
+			
 		else:
-			$PlayerContainer/Health.text = "x" + str(heart_left)
-		await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
-		$Animation.play("end")
+			await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
+			$Animation.play("end")
+			heart_left -= 1
+			if opponent_health == 1:
+				$PlayerContainer/Health.hide()
+			elif opponent_health == 0:
+				$PlayerContainer/PlayerHeart.play("died")
+			else:
+				$PlayerContainer/Health.text = "x" + str(heart_left)
 		await get_tree().create_timer(1).timeout
 		$Animation.play("start_text_box")
 		chatBox.show()
@@ -224,7 +266,6 @@ func _on_button_pressed():
 			game_ended = true
 			chatBox.show()
 			chatBox.text = "[center]You lost[/center]"
-			await get_tree().create_timer(3).timeout
 			await get_tree().create_timer(3).timeout
 			chatBox.hide()
 			$Animation.play("end_text_box")

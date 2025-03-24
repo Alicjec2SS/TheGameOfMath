@@ -36,4 +36,4 @@ func _ready():
 	
 func _process(delta):	
 	playerData.LVL = int(floor(pow(float(playerData.EXP) / 100, 1.0 / 2)))
-
+	playerData.HP = 3 + playerData.LVL

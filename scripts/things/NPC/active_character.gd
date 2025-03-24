@@ -36,11 +36,13 @@ func exit_dialog(arg: String):
 	if arg == 'quit':
 		global.can_move = true
 		global.is_interacting = false
-		print("ID: "+ str(battle_ID_self) + "|Is Battle: " + str(is_battle))
+		#print("ID: "+ str(battle_ID_self) + "|Is Battle: " + str(is_battle))
 		$AnimatedSprite2D.play(str(artID)+"_"+state)
 		get_node('/root/'+get_tree().current_scene.name+'/Player').anchor = prevdir
 		if is_battle:
 			if not battle_ID_self in global.playerData.defeated_ID_player:
+				global.can_move=false
+				global.is_interacting=true
 				var battle_scene = get_node("/root/"+get_tree().current_scene.name+"/Player/Battle")
 				battle_scene.opponent_health = health
 				battle_scene.tran_troi = trantroi
@@ -49,12 +51,14 @@ func exit_dialog(arg: String):
 				battle_scene.EXP = XP
 				battle_scene.money = money
 				battle_scene.level_question = levelQuest
+				battle_scene.heart_left = global.playerData.HP
 				battle_scene.show()
 				global.can_move = false
 				global.is_interacting = true
 		
 func _process(delta):
-	print(global.is_interacting)
+	#print(global.is_interacting)
+	#print(global.playerData.HP)
 	if battle_ID_self in global.playerData.defeated_ID_player:
 		return
 	if self.has_node('RayCast2D') and not have_finish:
@@ -67,7 +71,6 @@ func _process(delta):
 				_change_face_to_opposite(true)
 				have_finish = true
 				go_anim_play.play('go')
-				print("skibidi")
 				self.get_node('AnimatedSprite2D').play(str(artID)+ "_" +side_to_go)
 				global.can_move = false
 				global.is_interacting = true
@@ -77,6 +80,8 @@ func _process(delta):
 func interact():
 	#converting the side
 	_change_face_to_opposite(false)
+	global.can_move=false
+	global.is_interacting=true
 	if is_battle:
 		if battle_ID_self in global.playerData.defeated_ID_player:
 			Dialogic.start(after_battle_dialog_tree)
@@ -86,7 +91,6 @@ func interact():
 	else:
 		Dialogic.start(dialog_tree)
 	if not Dialogic.signal_event.is_connected(exit_dialog):
-		print("bruh")
 		Dialogic.signal_event.disconnect(exit_dialog)
 		Dialogic.signal_event.connect(exit_dialog)
 	else:

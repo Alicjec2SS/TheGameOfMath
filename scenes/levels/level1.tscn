@@ -98,6 +98,8 @@ dialog_tree = "testCharacter1"
 after_battle_dialog_tree = "testCharacter1"
 is_battle = true
 health = 9
+XP = 92233720368547760
+money = 1020001231023
 levelQuest = 5
 
 [node name="Char1" type="Path2D" parent="."]

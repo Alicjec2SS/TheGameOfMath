@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource("1_hmmkv")
-position = Vector2(234, 75)
-current_map_path = "res://scenes/levels/level2.tscn"
-money = 63
-defeated_ID_player = []
-HP = 3
-EXP = 24516
-LVL = 15
+position = Vector2(208.728, 137.724)
+current_map_path = "res://scenes/levels/level1.tscn"
+money = 2040002462374
+defeated_ID_player = [911]
+HP = 42949675
+EXP = 184467440737120306
+LVL = 42949672
 name = "Alice"
