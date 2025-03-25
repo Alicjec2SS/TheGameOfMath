@@ -14,7 +14,7 @@ var last_state = "down"#đặt last state quyết định anchor cho engine 8 h�
 #biến thiết lập(bán tĩnh)
 @export var speed = 75
 
-#biến tĩnh(các obj)
+#biến tĩnh (các obj)
 @onready var Anim = $AnimatedSprite2D
 
 func ready():
@@ -42,6 +42,8 @@ func move(delta):
 	if global.can_move:
 		direction = direction.normalized()
 		velocity = direction*speed*delta*100
+		if global.playerData.current_skill == 1:
+			velocity *= 2
 	else:
 		velocity = Vector2()
 

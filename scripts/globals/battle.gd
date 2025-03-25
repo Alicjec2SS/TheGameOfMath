@@ -22,7 +22,13 @@ var question_obj
 @export var UI:CanvasLayer
 
 #effect id: từ 1 -> 6
-@export var effect_id = 1
+#1: x1.5 speed
+#2: x1.5 exp but x0.5HP
+#3: x2 damage but 1 shot = die
+#4: totem
+#5: x1.5DMG but *0.65HP
+#6: x2HP
+var effect_id = global.playerData.current_skill
 
 @export var level_question = 1
 var levelQuest
@@ -40,9 +46,8 @@ signal skip_emitted
 #biến:
 var is_totem_available = false
 
-#hiệu ứng: x2 damage nhưng 1 lần thua là nắm
-
 #biến:
+#hiệu ứng: x2 damage nhưng 1 lần thua là nắm , skiill cấp 3
 var x2damage = false
 
 func hide_all():
@@ -95,6 +100,13 @@ func _process(delta):
 		elif effect_id == 3:#hiệu ứng: x2 damage nhưng 1 lần thua là nắm
 			heart_left = 1
 			x2damage = true
+		elif effect_id == 2:
+			heart_left = int(global.playerData.HP / 2)
+			EXP *= 1.5
+		elif effect_id == 5:
+			heart_left = int(global.playerData.HP * 0.65)
+		elif effect_id == 6:
+			heart_left *= 2
 		else:
 			is_totem_available = false
 			x2damage = false
@@ -119,6 +131,22 @@ func _process(delta):
 			#generate question 
 			if counter == 0:
 				bf_game_dialog_doned = true
+				if effect_id == 4:#miễn thương
+					is_totem_available = true
+				elif effect_id == 3:#hiệu ứng: x2 damage nhưng 1 lần thua là nắm
+					heart_left = 1
+					x2damage = true
+				elif effect_id == 2:
+					heart_left = int(global.playerData.HP / 2)
+					EXP *= 1.5
+				elif effect_id == 5:
+					heart_left = int(global.playerData.HP * 0.65)
+					global.playerData.DMG *= 1.5
+				elif effect_id == 6:
+					heart_left *= 2
+				else:
+					is_totem_available = false
+					x2damage = false
 				question_obj = levelQuest.new()
 				answer = question_obj.expression[1]
 				infoTextBox.text = "[center]"+question_obj.expression[0]+"[/center]"
@@ -153,14 +181,17 @@ func _on_button_pressed():
 	if userAnswer in answer:
 		print("You did correct")
 		if x2damage:
-			opponent_health -= 2
+			opponent_health -= 2 * global.playerData.DMG
+		if effect_id == 5:
+			opponent_health -= 1.5 * global.playerData.DMG
 		else:
-			opponent_health -= 1
+			opponent_health -= global.playerData.DMG
 		#await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
 		if opponent_health == 1:
 			$OpponentContainer/OpponentHealth.hide()
-		elif opponent_health <= 0:
+		if opponent_health <= 0:
 			$OpponentContainer/OpponentHearts2.play("died")
+			$OpponentContainer/OpponentHealth.hide()
 		else:
 			$OpponentContainer/OpponentHealth.text = "x" + str(opponent_health)
 		if opponent_health <= 0:

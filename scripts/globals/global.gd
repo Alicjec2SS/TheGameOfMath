@@ -36,4 +36,15 @@ func _ready():
 	
 func _process(delta):	
 	playerData.LVL = int(floor(pow(float(playerData.EXP) / 100, 1.0 / 2)))
+	if playerData.LVL > 80:
+		playerData.LVL = 80
+	#mỗi 10 LVL sẽ nhận được 1 skill
+	playerData.enabled_skills = []
+	for i in range(int(playerData.LVL / 10)):
+		if i <= 6:
+			playerData.enabled_skills.append(i)
+	if not playerData.current_skill in playerData.enabled_skills:
+		playerData.current_skill = 0
 	playerData.HP = 3 + playerData.LVL
+	playerData.DMG = int(playerData.HP * 0.325)
+	
