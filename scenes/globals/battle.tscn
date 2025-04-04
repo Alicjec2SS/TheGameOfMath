@@ -468,9 +468,9 @@ text = "Question:"
 
 [node name="SupportText2" type="Label" parent="PlayerContainer/SupportTexts"]
 layout_mode = 0
-offset_left = 958.0
+offset_left = 975.0
 offset_top = 579.0
-offset_right = 1102.0
+offset_right = 1119.0
 offset_bottom = 630.0
 theme_override_fonts/font = ExtResource("1_t8wh6")
 theme_override_font_sizes/font_size = 50
@@ -559,4 +559,8 @@ icon = ExtResource("3_d4cqq")
 flat = true
 expand_icon = true
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

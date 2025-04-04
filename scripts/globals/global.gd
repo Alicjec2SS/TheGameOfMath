@@ -35,7 +35,7 @@ func _ready():
 	Transporter.change_scene(playerData.current_map_path,playerData.position)
 	
 func _process(delta):	
-	playerData.LVL = int(floor(pow(float(playerData.EXP) / 100, 1.0 / 2)))
+	playerData.LVL = 1 + int(floor(pow(float(playerData.EXP) / 100, 1.0 / 2)))
 	if playerData.LVL > 80:
 		playerData.LVL = 80
 	#mỗi 10 LVL sẽ nhận được 1 skill

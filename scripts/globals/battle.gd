@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var chatBox = $Chatbox/ChatBox
 #@onready var playerHearts = $PlayerContainer/Hearts
 @onready var playerCamera = $"../Camera2D" # camera để shake
+@onready var timer = $Timer
 
 var answer = ""
 var turn = 1
@@ -20,6 +21,8 @@ var question_obj
 @export var EXP = 0
 @export var money = 0
 @export var UI:CanvasLayer
+@export var delay_time:int = 5
+
 
 #effect id: từ 1 -> 6
 #1: x1.5 speed
@@ -49,6 +52,13 @@ var is_totem_available = false
 #biến:
 #hiệu ứng: x2 damage nhưng 1 lần thua là nắm , skiill cấp 3
 var x2damage = false
+
+func reset_timer():
+	timer.stop()
+	timer.start()
+	timer.stop()
+
+
 
 func hide_all():
 	$PlayerContainer.hide()
@@ -89,6 +99,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(timer.time_left)
+	timer.wait_time = delay_time
 	if effect_id == 3 and heart_left > 0:#hiệu ứng: x2 damage nhưng 1 lần thua là nắm
 		heart_left = 1
 		x2damage = true
@@ -154,6 +166,8 @@ func _process(delta):
 				await get_tree().create_timer(1).timeout
 				$Animation.play("start")
 				await get_tree().create_timer(1).timeout
+				reset_timer()
+				timer.start()
 				counter += 1
 			return
 
@@ -161,7 +175,7 @@ func _process(delta):
 func _on_button_pressed():
 	#không cho bẫm lại nuts khi đã bấm:
 	$Button.disabled = true
-
+	timer.stop()
 	
 	var userAnswer = answerBox.get_text()
 	userAnswer = userAnswer.strip_edges()
@@ -182,14 +196,14 @@ func _on_button_pressed():
 		print("You did correct")
 		if x2damage:
 			opponent_health -= 2 * global.playerData.DMG
-		if effect_id == 5:
+		elif effect_id == 5:
 			opponent_health -= 1.5 * global.playerData.DMG
 		else:
 			opponent_health -= global.playerData.DMG
 		#await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
 		if opponent_health == 1:
 			$OpponentContainer/OpponentHealth.hide()
-		if opponent_health <= 0:
+		elif opponent_health <= 0:
 			$OpponentContainer/OpponentHearts2.play("died")
 			$OpponentContainer/OpponentHealth.hide()
 		else:
@@ -245,7 +259,7 @@ func _on_button_pressed():
 			self.hide()
 			# setup lại cho lần sau:
 
-	else:
+	elif timer.time_left >= 0:
 		print("Incorrect")
 		# bắt đầu quy trình trừ điểm:
 		playerCamera.add_trauma(0.5)
@@ -342,6 +356,110 @@ func _on_button_pressed():
 	answer = question_obj.expression[1]
 	infoTextBox.text = "[center]"+question_obj.expression[0]+"[/center]"
 	turn += 1
+	reset_timer()
+	timer.start()
 	
 	$Button.disabled = false
 
+
+func _on_timer_timeout():
+	if not self.visible:
+		return
+		
+	$Button.disabled = true
+	
+	print("Incorrect")
+	# bắt đầu quy trình trừ điểm:
+	playerCamera.add_trauma(0.5)
+		
+	#await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
+	if is_totem_available:
+		is_totem_available = false
+		print("totem")
+		await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
+		$Animation.play("end")
+		await get_tree().create_timer(1).timeout
+		chatBox.text = "[center]Totem saved you[/center]"
+		chatBox.show()
+		$Animation.play("start_text_box")
+		await get_tree().create_timer(3).timeout
+		$Animation.play("end_text_box")
+		await get_tree().create_timer(1).timeout
+			
+	else:
+		await get_tree().create_timer(1).timeout #đợi một giây để thằng user ngu dốt hiểu được chuyện j vừa xảy ra
+		$Animation.play("end")
+		heart_left -= 1
+		if opponent_health == 1:
+			$PlayerContainer/Health.hide()
+		elif opponent_health == 0:
+			$PlayerContainer/PlayerHeart.play("died")
+		else:
+			$PlayerContainer/Health.text = "x" + str(heart_left)
+		
+	await get_tree().create_timer(1).timeout
+	$Animation.play("start_text_box")
+	chatBox.show()
+	if len(answer) >= 2 :#cụ thể là 2
+		chatBox.text = "[center]The correct answer were " + str(answer[0]) + " or " + str(answer[1])
+	else:
+		chatBox.text = "[center]The correct answer was " + str(answer[0]) + "[/center]"
+	await get_tree().create_timer(3).timeout
+	chatBox.hide()
+	$Animation.play("end_text_box")
+	await get_tree().create_timer(1).timeout
+	if heart_left <= 0:
+		print("You lose. Stupid")
+		UI.get_node("Mini/anim").play("death")
+		await get_tree().create_timer(1).timeout
+		UI.get_node("Mini/anim").play("die")
+		# setup lại cho lần sau:
+		heart_left = global.playerData.HP
+		opponent_health = 999
+		$Animation.play("start_text_box")
+		game_ended = true
+		chatBox.show()
+		chatBox.text = "[center]You lost[/center]"
+		await get_tree().create_timer(3).timeout
+		chatBox.hide()
+		$Animation.play("end_text_box")
+		chatBox.text = "[center]You said: .. .. .. ... . . .... [/center]"
+		await get_tree().create_timer(3).timeout
+		$Animation.play("end_text_box")
+		
+		var random = RandomNumberGenerator.new()
+		random.randomize()
+		var payout = random.randi_range(0,global.playerData.money)
+		await get_tree().create_timer(1).timeout
+		$Animation.play("start_text_box")
+		chatBox.show()
+		game_ended = true
+		chatBox.text = "[center]You gave " + str(payout) + " G for your opponent! [/center]"
+		await get_tree().create_timer(3).timeout
+		$"../Transition".play("fade_out")
+		$Animation.play("end_text_box")
+		await get_tree().create_timer(1.1).timeout
+			
+		global.playerData.money -= payout
+			
+		$"../Transition".play("fade_in")
+		UI.get_node("anim").play("end")
+		await get_tree().create_timer(1).timeout
+
+		global.can_move = true
+		global.is_interacting = false
+			
+			
+		#tắt cái battle đi 
+		self.hide()
+	else:
+		$Animation.play("start")
+		await get_tree().create_timer(1).timeout
+	$Button.disabled = false
+	question_obj = levelQuest.new()
+	answer = question_obj.expression[1]
+	infoTextBox.text = "[center]"+question_obj.expression[0]+"[/center]"
+	turn += 1
+	reset_timer()
+	timer.start()
+	
