@@ -1,16 +1,16 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://tbcmymn2fhr6"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://bm88yirecf32d"]
 
 [ext_resource type="Script" path="res://scripts/globals/player/playerData.gd" id="1_hmmkv"]
 
 [resource]
 script = ExtResource("1_hmmkv")
-position = Vector2(1.80072, 125.359)
+position = Vector2(117.537, 139.545)
 current_map_path = "res://scenes/levels/level1.tscn"
-money = 8160114806731
+money = 17340125887027
 defeated_ID_player = [172, 911]
 HP = 83
 DMG = 26
-EXP = 553402322211287010
+EXP = 737869762948386070
 LVL = 80
 name = "Alice"
 enabled_skills = [0, 1, 2, 3, 4, 5, 6]

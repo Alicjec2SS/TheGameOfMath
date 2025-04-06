@@ -117,10 +117,8 @@ dialog_tree = "testCharacter1"
 after_battle_dialog_tree = "testCharacter1"
 can_be_moving = true
 go_anim_play = NodePath("../../AnimationPlayer")
-time_to_go = 3.0
 is_battle = true
 battle_ID_self = 172
-levelQuest = 3
 
 [node name="RayCast2D" type="RayCast2D" parent="Char1/PathFollow2D/ActiveCharacter"]
 target_position = Vector2(-0.318714, 75.006)
