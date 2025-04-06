@@ -4,14 +4,17 @@
 
 [resource]
 script = ExtResource("1_hmmkv")
-position = Vector2(117.537, 139.545)
+position = Vector2(13.9962, 127.004)
 current_map_path = "res://scenes/levels/level1.tscn"
-money = 17340125887027
-defeated_ID_player = [172, 911]
-HP = 83
-DMG = 26
-EXP = 737869762948386070
-LVL = 80
+money = 19378900526397
+defeated_ID_player = []
+HP = 3
+DMG = 1
+EXP = 0
+LVL = 1
 name = "Alice"
-enabled_skills = [0, 1, 2, 3, 4, 5, 6]
+MAX_HP = 4
+mana = 100
+MAX_MANA = 100
+enabled_skills = []
 current_skill = 0

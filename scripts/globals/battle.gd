@@ -77,6 +77,7 @@ func _process(delta):
 	if game_ended:
 		return  # Thoát sớm nếu game đã kết thúc
 	timer.wait_time = delay_time
+	UI.get_node("Mini/HP_Bar").value = heart_left
 	if effect_id == 3 and heart_left > 0:
 		heart_left = 1
 		x2damage = true
@@ -152,6 +153,8 @@ func _on_button_pressed():
 			formattedAns.append(str(round(i * 100) / 100).pad_decimals(2))
 	answer = formattedAns
 
+	$Animation.play("end")
+	await get_tree().create_timer(1).timeout
 	if userAnswer in answer:
 		handle_correct_answer()
 	else:
@@ -184,7 +187,6 @@ func handle_incorrect_answer():
 	if is_totem_available:
 		is_totem_available = false
 		print("totem")
-		await get_tree().create_timer(1).timeout
 		$Animation.play("end")
 		await get_tree().create_timer(1).timeout
 		$Animation.play("start_text_box")
@@ -266,6 +268,7 @@ func handle_victory():
 	reset_game()  # Reset trước khi thoát
 	global.can_move = true
 	global.is_interacting = false
+	global.playerData.HP = heart_left
 	self.hide()
 
 func handle_defeat():
@@ -302,6 +305,7 @@ func handle_defeat():
 	UI.get_node("anim").play("end")
 	await get_tree().create_timer(1).timeout
 	reset_game()  # Reset trước khi thoát
+	global.playerData.HP = global.playerData.MAX_HP
 	global.can_move = true
 	global.is_interacting = false
 	self.hide()

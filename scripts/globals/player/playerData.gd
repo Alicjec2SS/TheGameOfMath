@@ -14,7 +14,9 @@ class_name PlayerData
 @export var EXP = 0
 @export var LVL = 1
 @export var name = "Alice"
-
+@export var MAX_HP = 3
+@export var mana = 100
+@export var MAX_MANA = 100
 
 @export var enabled_skills = [0]
 @export var current_skill = 0

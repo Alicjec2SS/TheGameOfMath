@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://btfm0jvappjly"]
+[gd_scene load_steps=41 format=3 uid="uid://btfm0jvappjly"]
 
 [ext_resource type="Script" path="res://scripts/UI_scene/Mini.gd" id="1_c0xmx"]
 [ext_resource type="FontFile" uid="uid://csfxe4gpjf0nh" path="res://fonts/superstar_memesbruh03.ttf" id="1_cxp4p"]
@@ -204,6 +204,62 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ou13x"]
+bg_color = Color(0.404512, 0.404511, 0.404511, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.314316, 0.314316, 0.314316, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qf48f"]
+bg_color = Color(0.717647, 0.627451, 0, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.815686, 0.635294, 0, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_x5vk4"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ou13x")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_qf48f")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q1jr"]
+bg_color = Color(0.403922, 0.403922, 0.403922, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.313726, 0.313726, 0.313726, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5g1fn"]
+bg_color = Color(0, 0.745098, 0, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.403922, 0, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_tuhp0"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_4q1jr")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_5g1fn")
+
 [sub_resource type="Animation" id="Animation_o30k2"]
 resource_name = "end"
 tracks/0/type = "value"
@@ -267,19 +323,26 @@ _data = {
 [node name="UI" type="CanvasLayer"]
 
 [node name="Mini" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_c0xmx")
 
-[node name="ColorRect" type="ColorRect" parent="Mini"]
+[node name="Background1" type="ColorRect" parent="Mini"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 324.0
 offset_bottom = 114.0
+color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="Background2" type="ColorRect" parent="Mini"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 122.0
+offset_right = 289.0
+offset_bottom = 199.0
 color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [node name="Name" type="Label" parent="Mini"]
@@ -348,12 +411,52 @@ theme_override_fonts/font = ExtResource("1_cxp4p")
 theme_override_font_sizes/font_size = 20
 text = "Balance:"
 
+[node name="Label4" type="Label" parent="Mini/Supports"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 132.0
+offset_right = 33.0
+offset_bottom = 155.0
+theme_override_fonts/font = ExtResource("1_cxp4p")
+theme_override_font_sizes/font_size = 25
+text = "HP:
+"
+
+[node name="Label5" type="Label" parent="Mini/Supports"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 166.0
+offset_right = 33.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("1_cxp4p")
+theme_override_font_sizes/font_size = 25
+text = "St:
+"
+
 [node name="anim" type="AnimatedSprite2D" parent="Mini"]
 position = Vector2(68, 58)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ky0jn")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="Mana_Bar" type="ProgressBar" parent="Mini"]
+offset_left = 59.0
+offset_top = 164.0
+offset_right = 280.0
+offset_bottom = 191.0
+theme = SubResource("Theme_x5vk4")
+value = 70.0
+show_percentage = false
+
+[node name="HP_Bar" type="ProgressBar" parent="Mini"]
+offset_left = 59.0
+offset_top = 129.0
+offset_right = 281.0
+offset_bottom = 157.0
+theme = SubResource("Theme_tuhp0")
+value = 50.0
+show_percentage = false
 
 [node name="Big" type="Control" parent="."]
 visible = false

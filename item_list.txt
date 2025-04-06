@@ -1,0 +1,62 @@
+kí hiệu:
+	C : vật phẩm tiêu hao(dùng xong là mất)
+	E: vật phẩm trang bị(dừng xong không mất)
+	S: Sell-only(vật phẩm chỉ bán được chứ không làm được cái gì hết)
+
+Các hiệu ứng không cộng dồn
+ 
+-Normal- 
+KPI:30 món 
+
+
+Nước lọc: Hồi 5 HP.(C)
+Bánh mì khô: Hồi 3 HP.(C)
+Táo: Hồi 10 năng lượng(C)
+Chuối:Hồi 10 năng lượng(C)
+MacDonald(nhỏ): Hồi 10 năng lượng(C)
+Pepsi: Hồi 5 năng lượng
+Salad rau củ(nhỏ) : 30 năng lượng 
+Gôm tẩy mini: Tăng 1% EXP trận kế nếu thắng (C)
+Gói muối: Giảm 2% sát thương trận kế. (C)
+Giấy nháp: +5% thời gian trong trận kế (C)
+Găng tay cũ: +1 phòng thủ một trận (C)
+Vở cũ: Bán được 5 coin.(S)
+Miếng dán động lực: Hồi 2% HP khi trả lời đúng.(C)
+Cây bút thần: Tăng 5% sát thương trong trận kế.(C)
+Hương thảo: Hồi 3% HP khi sai.(C)
+Cà phê:+5% thời gian trong trận kế (C)
+Cái nón cũ: Tăng 2% phòng thủ khi không trả lời đúng.(C)
+Sách học vặt: Tăng 1% EXP mỗi câu trả lời đúng.(C)
+Báo giấy: Cung cấp 1% tránh sát thương trong trận đấu.(C)
+Cây bút bi: Tăng 5% khả nằng né(né: miễn sát thuơng).(C)
+Bút hết mực: Bán được 3 coin. (C)
+
+
+-Uncommon-
+KPI:25 món 
+Mac Donald(lớn):Hồi 30 năng lượng, 25 máu
+Sữa hộp: Hồi 10 HP.(C)
+Salad rau củ(lớn):Hồi 50 năng lượng và 20 máu
+Bút thần kỳ: Tăng 5% EXP trong 1 trận.(C)
+Đồng hồ báo thức: Tăng 5% sát thương trong 3 câu trả lời đầu.(C)
+Áo mưa: Giảm 5% sát thương trận kế.(C)
+Vòng tay học sinh: Hồi 5% HP khi trả lời đúng.(C)
+Bảng học sinh: Tăng 5% sát thương trong 2 câu hỏi.(C)
+Kính bảo vệ: Giảm 10% sát thương khi trả lời sai(C)
+Mũ thép học sinh: +3 phòng thủ cho trận tiếp theo.(C)
+
+-Rare-
+KPI:20 món 
+
+-Epic-
+KPI:15 món
+
+-Legendary-
+KPI:10 món 
+ 
+
+
+
+
+
+

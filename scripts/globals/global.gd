@@ -45,6 +45,6 @@ func _process(delta):
 			playerData.enabled_skills.append(i)
 	if not playerData.current_skill in playerData.enabled_skills:
 		playerData.current_skill = 0
-	playerData.HP = 3 + playerData.LVL
-	playerData.DMG = int(playerData.HP * 0.325)
+	playerData.MAX_HP = 3 + playerData.LVL
+	playerData.DMG = int(playerData.MAX_HP * 0.325)
 	

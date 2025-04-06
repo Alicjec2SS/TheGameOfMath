@@ -1,10 +1,20 @@
 extends Control
 
+
+@onready var mana = $Mana_Bar
+@onready var HP = $HP_Bar
 @onready var anim = $anim
 var current_anim = "idle"  # Lưu trạng thái animation hiện tại
 
 
 func _process(delta):
+	mana.min_value = 0
+	mana.max_value = global.playerData.MAX_MANA
+	mana.value = global.playerData.mana
+	
+	HP.min_value = 0
+	HP.max_value = global.playerData.MAX_HP
+	HP.value = global.playerData.HP
 	if not self.visible:
 		$"../anim".play("show")
 	if $"../..".velocity != Vector2(0,0):
