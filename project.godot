@@ -21,6 +21,8 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Transporter="*res://scripts/globals/Transporter.gd"
 global="*res://scripts/globals/global.gd"
 QuestGenerator="*res://scripts/globals/quest_generator.gd"
+TimeManager="*res://Items/TimeManager.gd"
+EffectManager="*res://Items/EffectManager.gd"
 
 [dialogic]
 

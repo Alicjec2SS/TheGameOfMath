@@ -34,7 +34,8 @@ func _ready():
 	load_game_data()
 	Transporter.change_scene(playerData.current_map_path,playerData.position)
 	
-func _process(delta):	
+	
+func _process(delta):
 	playerData.LVL = 1 + int(floor(pow(float(playerData.EXP) / 100, 1.0 / 2)))
 	if playerData.LVL > 80:
 		playerData.LVL = 80
@@ -47,4 +48,11 @@ func _process(delta):
 		playerData.current_skill = 0
 	playerData.MAX_HP = 3 + playerData.LVL
 	playerData.DMG = int(playerData.MAX_HP * 0.325)
+	playerData.DEF = int(playerData.LVL * 0.75)
+	for item in global.playerData.waiting_items_effect:
+		item.recently_effect()
+		
+		
+
+
 	

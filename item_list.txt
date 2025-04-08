@@ -7,53 +7,126 @@ Các hiệu ứng không cộng dồn
  
 -Normal- 
 KPI:30 món 
-
-
-Nước lọc: Hồi 5 HP.(C)
-Bánh mì khô: Hồi 3 HP.(C)
-Táo: Hồi 10 năng lượng(C)
-Chuối:Hồi 10 năng lượng(C)
-MacDonald(nhỏ): Hồi 10 năng lượng(C)
-Pepsi: Hồi 5 năng lượng
-Salad rau củ(nhỏ) : 30 năng lượng 
-Gôm tẩy mini: Tăng 1% EXP trận kế nếu thắng (C)
-Gói muối: Giảm 2% sát thương trận kế. (C)
-Giấy nháp: +5% thời gian trong trận kế (C)
-Găng tay cũ: +1 phòng thủ một trận (C)
-Vở cũ: Bán được 5 coin.(S)
-Miếng dán động lực: Hồi 2% HP khi trả lời đúng.(C)
-Cây bút thần: Tăng 5% sát thương trong trận kế.(C)
-Hương thảo: Hồi 3% HP khi sai.(C)
-Cà phê:+5% thời gian trong trận kế (C)
-Cái nón cũ: Tăng 2% phòng thủ khi không trả lời đúng.(C)
-Sách học vặt: Tăng 1% EXP mỗi câu trả lời đúng.(C)
-Báo giấy: Cung cấp 1% tránh sát thương trong trận đấu.(C)
-Cây bút bi: Tăng 5% khả nằng né(né: miễn sát thuơng).(C)
-Bút hết mực: Bán được 3 coin. (C)
+1. Nước lọc: Hồi 5 HP. (C)  
+2. Bánh mì khô: Hồi 3 HP. (C)  
+3. Táo: Hồi 10 năng lượng. (C)  
+4. Chuối: Hồi 10 năng lượng. (C)  
+5. MacDonald (nhỏ): Hồi 10 năng lượng và 5 máu. (C)  
+6. Pepsi: Hồi 5 năng lượng. (C)  
+7. Salad rau củ (nhỏ): 30 năng lượng. (C)  
+8. Gôm tẩy mini: Tăng 1% EXP trận kế nếu thắng. (C)  
+9. Gói muối: Giảm 2% sát thương trận kế. (C)  
+10. Giấy nháp: +5% thời gian trong trận kế. (C)  
+11. Găng tay cũ: +1 phòng thủ một trận. (C)  
+12. Vở cũ: Bán được 5 coin. (S)  
+13. Miếng dán động lực: Hồi 2% HP khi trả lời đúng. (C)  
+14. Cây bút thần: Tăng 5% sát thương trong trận kế. (C)  
+15. Hương thảo: Hồi 3% HP khi sai. (C)  
+16. Cà phê: +5% thời gian trong trận kế. (C)  
+17. Cái nón cũ: Tăng 2% phòng thủ khi không trả lời đúng. (C)  
+18. Sách học vặt: Tăng 1% EXP mỗi câu trả lời đúng. (C)  
+19. Báo giấy: Cung cấp 1% tránh sát thương trong trận đấu. (C)  
+20. Cây bút bi: Tăng 5% khả năng né (né: miễn sát thương). (C)  
+21. Bút hết mực: Bán được 3 coin. (S)  
+22. Tẩy siêu cấp: Hồi toàn bộ năng lượng nếu HP dưới 10. (C)  
+23. Mảnh bút chì: +1 sát thương trong câu hỏi đầu tiên. (C)  
+24. Dây thun: Gây +2% sát thương cho đối thủ trong câu hỏi kế. (C)  
+25. Mì tôm sống: Hồi 7 năng lượng, giảm 1% phòng thủ trận kế. (C)  
+26. Cục tẩy cũ: Bán được 2 coin. (S)  
+27. Sticker cute: 3% hồi full máu nếu máu dưới 50%. (C)  
+28. Khăn giấy: Hồi 2 HP mỗi câu nếu máu dưới 30%. (C)  
+29. Mẩu phấn: Tăng 1% EXP trong câu hỏi đầu. (C)  
+30. Cái lược mini: +2% phòng thủ nếu sát thương đối thủ ≥ máu hiện tại. (C)  
 
 
 -Uncommon-
 KPI:25 món 
-Mac Donald(lớn):Hồi 30 năng lượng, 25 máu
-Sữa hộp: Hồi 10 HP.(C)
-Salad rau củ(lớn):Hồi 50 năng lượng và 20 máu
-Bút thần kỳ: Tăng 5% EXP trong 1 trận.(C)
-Đồng hồ báo thức: Tăng 5% sát thương trong 3 câu trả lời đầu.(C)
-Áo mưa: Giảm 5% sát thương trận kế.(C)
-Vòng tay học sinh: Hồi 5% HP khi trả lời đúng.(C)
-Bảng học sinh: Tăng 5% sát thương trong 2 câu hỏi.(C)
-Kính bảo vệ: Giảm 10% sát thương khi trả lời sai(C)
-Mũ thép học sinh: +3 phòng thủ cho trận tiếp theo.(C)
+31. Mac Donald (lớn): Hồi 30 năng lượng, 25 máu. (C)  
+32. Gà quay: Hồi 50 năng lượng, 40 máu. (C)  
+33. Sữa hộp: Hồi 10 HP và 50 năng lượng. (C)  
+34. Salad rau củ (lớn): Hồi 50 năng lượng và 20 máu. (C)  
+35. Bút thần kỳ: Tăng 5% EXP trong 1 trận. (C)  
+36. Đồng hồ báo thức: Tăng 5% sát thương trong 3 câu trả lời đầu. (C)  
+37. Áo mưa: Giảm 5% sát thương trận kế. (C)  
+38. Vòng tay học sinh: Hồi 5% HP khi trả lời đúng. (C)  
+39. Bảng học sinh: Tăng 5% sát thương trong 2 câu hỏi. (C)  
+40. Kính bảo vệ: Giảm 10% sát thương khi trả lời sai. (C)  
+41. Mũ thép học sinh: +3 phòng thủ cho trận tiếp theo. (C)  
+42. Kẹo ngậm vitamin: Hồi 15 năng lượng và 5 máu. (C)  
+43. Sổ tay bí kíp: +2% EXP trong trận kế nếu đúng 3 câu. (C)  
+44. Mũ tai bèo chống nắng: Tăng 4% phòng thủ nếu đang có dưới 50% máu. (C)  
+45. Sữa chua uống: Hồi 10 máu, +2% né trong câu kế. (C)  
+46. Bộ đề cũ: +5% thời gian với câu hỏi khó (nếu có). (C)  
+47. Cặp táp rách: Tăng 2% EXP khi thắng trận. (C)  
+48. Gối cổ mini: Hồi 1 HP mỗi câu nếu không trả lời sai. (C)  
+49. Huy hiệu học sinh: Miễn sát thương 1 lần duy nhất trận sau. (C)  
+50. Bình nước giữ nhiệt: Hồi 5 năng lượng mỗi 2 câu đúng. (C)  
+51. Giấy note bạn thân: Nếu đang dưới 30% máu, tự động hồi 10 HP 1 lần. (C)  
+52. Huy chương giấy: +4% sát thương nếu trận trước thắng. (C)  
+53. Cây thước nhôm: +5% sát thương nếu vừa hồi máu ở câu trước. (C)  
+54. Kẹo rau củ xanh : Hồi nửa cây năng lượng (gấp đôi năng lượng hiện tại, tối đa là full). (C)  
+55. Cờ tổ quốc mini: Tăng 1% tất cả chỉ số trong câu đầu trận. (C)
+
 
 -Rare-
 KPI:20 món 
+56. Dây chuyền may mắn: Tăng 8% né tránh trong 2 câu đầu. (C)  
+57. Sách giải nâng cao: +3% EXP mỗi câu đúng trong trận kế. (C)  
+58. Thẻ học sinh loại giỏi: +5% sát thương nếu đúng 2 câu liên tiếp. (C)  
+59. Nón bảo hiểm fullface: Giảm 10% sát thương toàn trận. (C)  
+60. Giày sneaker thể thao: +2% né, +2% EXP nếu tốc độ trả lời nhanh. (C)  
+61. Bánh sinh nhật mini: Hồi full HP và 50 năng lượng. (C)  
+62. Cục tẩy vĩnh cửu: Hồi 100% năng lượng nếu đúng câu khó(LVL > 3). (C)  
+63. Lá thư động viên: Miễn sát thương 1 lần nếu đang dưới 20% HP. (C)  
+64. Đồng hồ đeo tay thông minh: Tăng 5% thời gian cho tất cả câu. (C)  
+65. Tài liệu bí mật: +5% EXP nếu thắng trận mà không sai câu nào. (C)  
+66. Mắt kính cận cool ngầu: +5% phòng thủ nếu đúng câu chứa biểu thức dài. (C)  
+67. Túi cứu thương mini: Hồi 25 HP sau 3 câu hỏi. (C)  
+68. Huy hiệu thủ khoa: +8% sát thương nếu trả lời đúng 4 câu đầu. (C)  
+69. Thẻ bài toán học: 5% cơ hội nhân đôi EXP câu vừa trả lời. (C)  
+70. Sổ liên lạc xịn: Nếu đúng 3 câu liên tiếp, tăng 10% né 2 câu kế. (C)  
+71. Áo đồng phục thẳng thớm: +5% phòng thủ nếu không sai câu nào trong 3 câu đầu. (C)  
+72. Cặp da mới toanh: +5% sát thương và +5% EXP trong 1 trận. (C)  
+73. Kẹo trí nhớ: Nếu đúng câu đầu tiên, tăng 5% EXP cả trận. (C)  
+74. Bảng tên học sinh gương mẫu: +30%. (C)  
+75. Hộp cơm nhà làm: Hồi 30% năng lượng và 30% HP, nếu đúng một câu khó và máu bản thân thấp hơn máu đối thủ (C)  
+
+
 
 -Epic-
 KPI:15 món
 
+76. Máy tính bỏ túi CASIO: Tăng 15% sát thương  (C)  
+77. Bảng điện tử mini: +10% EXP. (C)  
+78. Huy chương toán thành phố: +12% EXP . (C)  
+79. Đồng phục Elite: +8% phòng thủ, +5% né toàn trận. (C)  
+80. Kính AR học tập: Tự động hồi 5% HP khi đúng . (C)  
+81. Balo kháng lực:  +20 giáp +15% giáp . (C)  
+82. Sổ tay thiên tài: +20% EXP, -5% HP (C)  
+83. Token vàng: +50 giáp khi HP dưới 10%. (C)  
+84. Đèn bàn cảm ứng: +10% thời gian toàn trận, (C)  
+85. Kẹo thần kỳ: Hồi full máu, nhưng giảm 10% EXP trận kế. (C)  
+86. Cây thước laser: +10% sát thương  và 20% né (C)  
+87. Đồng hồ đếm ngược cao cấp: Gây cho đối thủ -5%HP (không thể cản phá) trong 3 câu đầu. (C)  
+88. Bản đồ não học sinh giỏi: Tăng 15% EXP nếu thắng liên tiếp 2 trận. ()  
+89. Quả cầu Rubik cấp tốc: Tăng 30% né nếu đúng. (C)  
+90. Thẻ Masterclass: Tăng 25% tất cả chỉ số trong câu đầu trận.(C)
+
 -Legendary-
-KPI:10 món 
- 
+KPI:10 món
+
+91. Vương miện học bá: Tăng 10% EXP toàn trận. (C)  
+92. Giáp thần số học: Miễn 100% sát thương từ 3 câu đầu. (C)  
+93. Thẻ bài truyền thuyết: Tự động hồi full HP và năng lượng 1 lần mỗi trận. (C) 
+94. Cúp vô địch giải toán: Hồi sinh một lần với 1/2 cây máu và bay 50% tiền hiện có(C)
+95. Bút ký định mệnh: Nếu còn ít hơn 10 máu HP, không thể chết trong 2 câu tiếp theo. (C)  
+96. Lá thư thầy cô: Giảm nửa máu của đối thủ và trừ 50% tiền hiện có(C)  
+97. Balo không gian học tập: DÙng nửa số tiền hiện có để gọi lại một món trong kho(E)  
+98. Găng tay tổ đội: +50% sát thương (C)  
+99. Áo choàng Định lý: Câu hỏi có độ khó lớn hơn 3 thì miễn nhiễm tuy nhiên cuối trận bị chia đôi level. (C)  
+100. Tinh linh học tập: Sau mỗi trận thắng, hồi 75% HP và 75% năng lượng. (E)  
+
+
 
 
 

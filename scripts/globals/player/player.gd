@@ -12,7 +12,7 @@ var anchor = ""
 var last_state = "down"#đặt last state quyết định anchor cho engine 8 hướng
 
 #biến thiết lập(bán tĩnh)
-@export var speed = 75
+
 
 #biến tĩnh (các obj)
 @onready var Anim = $AnimatedSprite2D
@@ -41,7 +41,7 @@ func move(delta):
 	#biến dữ liệu của direction thành velocity
 	if global.can_move:
 		direction = direction.normalized()
-		velocity = direction*speed*delta*100
+		velocity = direction*(global.playerData.speed+global.playerData.add_speed)*delta*100
 		if global.playerData.current_skill == 1:
 			velocity *= 2
 	else:
@@ -58,7 +58,7 @@ func _physics_process(delta):
 	#print(global.can_move)
 	update_data_to_global()
 	process_animation_by_direction(direction)
-	
+
 func process_animation_by_direction(_direction):
 	var anim
 	if global.can_move:
@@ -87,5 +87,5 @@ func process_animation_by_direction(_direction):
 		anim = Anim.animation
 		anim = anim.replace("walk","idle")
 		Anim.play(anim)
-		
+
 

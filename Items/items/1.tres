@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=2 format=3 uid="uid://dgh1ujom4e71f"]
+
+[ext_resource type="Script" path="res://Items/inventory_item.gd" id="1_uxsku"]
+
+[resource]
+script = ExtResource("1_uxsku")
+ID = 1
+des = "Hồi 5HP"
+name = "Water"
+type = "Consumable item"
+time_effect = true
+duration = 10
+effect_time_space = 2
+add_HP_by_number = 20
+add_HP_by_percentage = -1
+add_MP_by_number = 0
+add_MP_by_percentage = -1
+add_speed_by_number = 0
+add_speed_by_percentage = -1
