@@ -19,7 +19,8 @@ var question_obj
 @export var money = 0
 @export var UI: CanvasLayer
 @export var delay_time: int = 5
-@export var oponent_damage = 1
+@export var opponent_damage = 1
+@export var mana_cost = 0
 
 var effect_id = global.playerData.current_skill
 @export var level_question = 1
@@ -199,7 +200,9 @@ func handle_incorrect_answer():
 		chatBox.hide()
 		start_new_turn()
 	else:
-		heart_left -= oponent_damage * (100 / (100 + global.playerData.DEF))
+		var defense = float(global.playerData.DEF)
+		var damage_taken = opponent_damage * (100 / (100 + defense))
+		heart_left -= damage_taken
 		if heart_left <= 0:
 			$PlayerContainer/PlayerHeart.play("died")
 			handle_defeat()

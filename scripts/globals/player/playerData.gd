@@ -17,11 +17,11 @@ class_name PlayerData
 @export var MAX_HP = 3
 @export var mana = 100
 @export var MAX_MANA = 100
-@export var DEF = 0
+@export var DEF:int = 0
 
 @export var enabled_skills = [0]
 @export var current_skill = 0
-@export var waiting_items_effect = []
+@export var waiting_items_effect: Array[int] = []
 @export var add_speed = 0
 @export var speed = 75
 

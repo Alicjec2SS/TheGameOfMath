@@ -7,8 +7,8 @@ Các hiệu ứng không cộng dồn
  
 -Normal- 
 KPI:30 món 
-1. Nước lọc: Hồi 5 HP. (C)  
-2. Bánh mì khô: Hồi 3 HP. (C)  
+1. Nước lọc: Hồi 3 HP. (C)  
+2. Bánh mì khô: Hồi 5 HP. (C)  
 3. Táo: Hồi 10 năng lượng. (C)  
 4. Chuối: Hồi 10 năng lượng. (C)  
 5. MacDonald (nhỏ): Hồi 10 năng lượng và 5 máu. (C)  

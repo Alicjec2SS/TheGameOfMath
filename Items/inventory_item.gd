@@ -9,6 +9,7 @@ class_name InvItem
 @export var name:String = "This is the name of the item"
 @export var texture:Texture2D
 @export var type:String = "Consumable item"
+@export var sell:int = 10
 
 #thông số hiệu ứng
 

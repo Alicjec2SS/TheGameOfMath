@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var XP=90
 @export var money=99
 @export var levelQuest=1
+@export var opponent_damage = 1
 
 #global.playerData.defeated_ID_player
 
@@ -36,6 +37,7 @@ func exit_dialog(arg:String):
 				battle_scene.money=money
 				battle_scene.level_question=levelQuest
 				battle_scene.heart_left = global.playerData.HP
+				battle_scene.opponent_damage = opponent_damage
 				battle_scene.show()
 				
 

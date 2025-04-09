@@ -1,10 +1,15 @@
 extends Node
 
+func get_item(ID):
+	return ResourceLoader.load("res://Items/items/"+ str(ID) + ".tres")#.duplicate(true)
+
 func apply_item_effect(item: InvItem) -> void:
 	# Dùng call_deferred để chạy non-blocking
 	call_deferred("_process_item_effect", item)
 
 func _process_item_effect(item: InvItem) -> void:
+	print("Running recently_effect() for", name)
+	global.playerData.waiting_items_effect.erase(item.ID)
 	if item.duration > 0 and item.time_effect:
 		# Hiệu ứng ngay lập tức (không theo thời gian)
 		if item.add_speed_by_percentage > 0:
@@ -25,5 +30,5 @@ func _process_item_effect(item: InvItem) -> void:
 		global.playerData.recovery(item.add_HP_by_number, item.add_MP_by_number)
 
 	# Xóa item khỏi danh sách hiệu ứng nếu cần
-	global.playerData.waiting_items_effect.erase(item)
+
 

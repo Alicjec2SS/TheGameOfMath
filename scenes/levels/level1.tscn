@@ -119,6 +119,7 @@ can_be_moving = true
 go_anim_play = NodePath("../../AnimationPlayer")
 is_battle = true
 battle_ID_self = 172
+opponent_damage = 999
 
 [node name="RayCast2D" type="RayCast2D" parent="Char1/PathFollow2D/ActiveCharacter"]
 target_position = Vector2(-0.318714, 75.006)

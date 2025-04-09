@@ -49,8 +49,12 @@ func _process(delta):
 	playerData.MAX_HP = 3 + playerData.LVL
 	playerData.DMG = int(playerData.MAX_HP * 0.325)
 	playerData.DEF = int(playerData.LVL * 0.75)
+	playerData.MAX_MANA = 100 + floor(15 * pow(playerData.LVL, 1.5))
+
+
 	for item in global.playerData.waiting_items_effect:
-		item.recently_effect()
+		var c_item = EffectManager.get_item(item)
+		c_item.recently_effect()
 		
 		
 

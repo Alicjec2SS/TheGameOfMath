@@ -5,13 +5,14 @@
 [resource]
 script = ExtResource("1_uxsku")
 ID = 1
-des = "Hồi 5HP"
+des = "Hồi 3HP"
 name = "Water"
 type = "Consumable item"
-time_effect = true
-duration = 10
-effect_time_space = 2
-add_HP_by_number = 20
+sell = 10
+time_effect = false
+duration = -1
+effect_time_space = 1
+add_HP_by_number = 3
 add_HP_by_percentage = -1
 add_MP_by_number = 0
 add_MP_by_percentage = -1

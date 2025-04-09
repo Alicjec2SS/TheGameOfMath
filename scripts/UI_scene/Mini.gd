@@ -24,6 +24,8 @@ func _process(delta):
 	$Name.text = global.playerData.name
 	$LVL.text = str(global.playerData.LVL)
 	$Coin.text = str(global.playerData.money) + "G"
+	$HP.text = str(global.playerData.HP)+"/"+str(global.playerData.MAX_HP)
+	$MP.text = str(global.playerData.mana)+"/"+str(global.playerData.MAX_MANA)
 
 func set_animation(name):
 	if current_anim != name:

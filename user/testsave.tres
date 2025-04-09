@@ -4,21 +4,21 @@
 
 [resource]
 script = ExtResource("1_hmmkv")
-position = Vector2(91.7026, 179.651)
+position = Vector2(82.9944, 50.497)
 current_map_path = "res://scenes/levels/level1.tscn"
-money = 20398901757519
-defeated_ID_player = [172, 911]
-HP = 3
+money = 20398901757618
+defeated_ID_player = [172]
+HP = 13
 DMG = 26
-EXP = 92233721338244846
+EXP = 92233721338244936
 LVL = 80
 name = "Alice"
 MAX_HP = 83
-mana = 0
-MAX_MANA = 100
+mana = 100
+MAX_MANA = 10833.0
 DEF = 60
 enabled_skills = [0, 1, 2, 3, 4, 5, 6]
 current_skill = 0
-waiting_items_effect = []
+waiting_items_effect = Array[int]([])
 add_speed = 0
 speed = 75
