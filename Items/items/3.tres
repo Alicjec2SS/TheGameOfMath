@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=2 format=3 uid="uid://c2ev1ltdw82aq"]
+
+[ext_resource type="Script" path="res://Items/inventory_item.gd" id="1_q74fu"]
+
+[resource]
+script = ExtResource("1_q74fu")
+ID = 3
+des = "+10 MP"
+name = "Apple"
+type = "Consumable item"
+sell = 10
+rank = "Common"
+time_effect = false
+duration = -1
+effect_time_space = 1
+add_HP_by_number = 0
+add_HP_by_percentage = -1
+add_MP_by_number = 10
+add_MP_by_percentage = -1
+add_speed_by_number = 0
+add_speed_by_percentage = -1

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=2 format=3 uid="uid://bt7phdgoppxif"]
+
+[ext_resource type="Script" path="res://Items/inventory_item.gd" id="1_hqx5m"]
+
+[resource]
+script = ExtResource("1_hqx5m")
+ID = 4
+des = "+10 MP"
+name = "Banana"
+type = "Consumable item"
+sell = 10
+rank = "Common"
+time_effect = false
+duration = -1
+effect_time_space = 1
+add_HP_by_number = 0
+add_HP_by_percentage = -1
+add_MP_by_number = 10
+add_MP_by_percentage = -1
+add_speed_by_number = 0
+add_speed_by_percentage = -1

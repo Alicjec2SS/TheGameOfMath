@@ -88,7 +88,7 @@ KPI:20 món
 71. Áo đồng phục thẳng thớm: +5% phòng thủ nếu không sai câu nào trong 3 câu đầu. (C)  
 72. Cặp da mới toanh: +5% sát thương và +5% EXP trong 1 trận. (C)  
 73. Kẹo trí nhớ: Nếu đúng câu đầu tiên, tăng 5% EXP cả trận. (C)  
-74. Bảng tên học sinh gương mẫu: +30%. (C)  
+74. Bảng tên học sinh gương mẫu: +30% mana. (C)  
 75. Hộp cơm nhà làm: Hồi 30% năng lượng và 30% HP, nếu đúng một câu khó và máu bản thân thấp hơn máu đối thủ (C)  
 
 
@@ -121,10 +121,10 @@ KPI:10 món
 94. Cúp vô địch giải toán: Hồi sinh một lần với 1/2 cây máu và bay 50% tiền hiện có(C)
 95. Bút ký định mệnh: Nếu còn ít hơn 10 máu HP, không thể chết trong 2 câu tiếp theo. (C)  
 96. Lá thư thầy cô: Giảm nửa máu của đối thủ và trừ 50% tiền hiện có(C)  
-97. Balo không gian học tập: DÙng nửa số tiền hiện có để gọi lại một món trong kho(E)  
+97. Balo không gian học tập: DÙng nửa số tiền hiện có để triệu hôi một món đồ bất kì tồn tại trong game(C)  
 98. Găng tay tổ đội: +50% sát thương (C)  
 99. Áo choàng Định lý: Câu hỏi có độ khó lớn hơn 3 thì miễn nhiễm tuy nhiên cuối trận bị chia đôi level. (C)  
-100. Tinh linh học tập: Sau mỗi trận thắng, hồi 75% HP và 75% năng lượng. (E)  
+100. Tinh linh học tập: Sau mỗi trận thắng, hồi 75% HP và 75% năng lượng. (C)  
 
 
 

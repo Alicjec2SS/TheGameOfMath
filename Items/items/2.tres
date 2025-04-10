@@ -5,10 +5,11 @@
 [resource]
 script = ExtResource("1_50mml")
 ID = 2
-des = "Hồi 5HP"
+des = "+5HP"
 name = "Dry Bread"
 type = "Consumable item"
 sell = 15
+rank = "Common"
 time_effect = false
 duration = -1
 effect_time_space = 1
