@@ -1,4 +1,8 @@
 # TheGameOfMath
+
+# Introduction 
+-Welcome to the making-of corner for The Game Of Math – a game crafted (and occasionally bugged) by a legendary crew: **Evenaner Alice** (Minh béo), **Sari Nguyễn**(Hố đen vũ trụ) and maybe more in the future :)))) .
+
 # 🎮 The Game of Math
 
 > A turn-based brainy RPG where math is your weapon.  
@@ -20,7 +24,7 @@
 ## ✨ Features
 
 - 🎯 Math + RPG = fun & challenge!
-- 📚 100+ unique items: Consumables, Equipment, Sell-only(working :))) )
+- 📚 100+ unique items: Consumables, Equipment, Sell-only (but it haven't done yet :))) )
 - 🔥 Item rarity: **Normal → Uncommon → Rare → Epic → Legendary**
 - 📈 Level system with dynamic EXP scaling
 - 🧠 Non-repetitive questions and randomized encounters
@@ -36,6 +40,6 @@ git clone https://github.com/yourusername/thegameofmath.git
 cd thegameofmath
 ```
 
-Then run it with godot(cuz it haven't done :))))
+Then run it with godot(cuz it haven't done yet :)))) )
 
 
