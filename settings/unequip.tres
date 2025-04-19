@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bu30yd48r1mvj"]
+
+[ext_resource type="FontFile" uid="uid://csfxe4gpjf0nh" path="res://fonts/superstar_memesbruh03.ttf" id="1_7knou"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21bkq"]
+bg_color = Color(1, 0.427451, 0.356863, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.32549, 0.258824, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf3m1"]
+bg_color = Color(1, 0.425788, 0.357085, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.3241, 0.258944, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1t6d2"]
+bg_color = Color(0.726223, 3.41728e-06, 5.77569e-07, 1)
+border_color = Color(0.572669, 1.1792e-06, 3.36915e-07, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[resource]
+default_base_scale = 2.0
+default_font = ExtResource("1_7knou")
+Button/styles/hover = SubResource("StyleBoxFlat_21bkq")
+Button/styles/normal = SubResource("StyleBoxFlat_jf3m1")
+Button/styles/pressed = SubResource("StyleBoxFlat_1t6d2")

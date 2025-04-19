@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://btfm0jvappjly"]
+[gd_scene load_steps=18 format=3 uid="uid://btfm0jvappjly"]
 
 [ext_resource type="Script" path="res://scripts/UI_scene/Mini.gd" id="1_c0xmx"]
 [ext_resource type="FontFile" uid="uid://csfxe4gpjf0nh" path="res://fonts/superstar_memesbruh03.ttf" id="1_cxp4p"]
 [ext_resource type="SpriteFrames" uid="uid://bxfekat3kbm60" path="res://settings/player.tres" id="3_n6cpe"]
+[ext_resource type="Texture2D" uid="uid://c4ocom6ke5p2m" path="res://Items/assets/test/1.png" id="4_7kp0b"]
+[ext_resource type="Theme" uid="uid://bu30yd48r1mvj" path="res://settings/unequip.tres" id="5_v5yi1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ou13x"]
 bg_color = Color(0.404512, 0.404511, 0.404511, 1)
@@ -312,7 +314,6 @@ text = "50/100
 "
 
 [node name="Big" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -325,7 +326,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MainBackground" type="ColorRect" parent="Big/Main"]
-z_index = -1
 layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
@@ -334,18 +334,11 @@ offset_bottom = 584.0
 color = Color(0.396078, 0.262745, 0.129412, 1)
 
 [node name="PlayerInfo" type="Control" parent="Big/Main"]
+visible = false
+z_index = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Background" type="ColorRect" parent="Big/Main/PlayerInfo"]
-z_index = -1
-layout_mode = 0
-offset_left = 80.0
-offset_top = 80.0
-offset_right = 464.0
-offset_bottom = 568.0
-color = Color(0.845073, 0.675418, 0.453047, 1)
 
 [node name="Frame" type="ColorRect" parent="Big/Main/PlayerInfo"]
 layout_mode = 0
@@ -533,6 +526,15 @@ theme_override_fonts/font = ExtResource("1_cxp4p")
 theme_override_font_sizes/font_size = 45
 text = "80"
 
+[node name="Background" type="ColorRect" parent="Big/Main/PlayerInfo"]
+z_index = -1
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 464.0
+offset_bottom = 568.0
+color = Color(0.845073, 0.675418, 0.453047, 1)
+
 [node name="Equipment" type="Control" parent="Big/Main"]
 anchors_preset = 0
 offset_right = 40.0
@@ -546,11 +548,67 @@ offset_right = 1072.0
 offset_bottom = 567.0
 color = Color(0.845073, 0.675418, 0.453047, 1)
 
+[node name="Armor" type="Control" parent="Big/Main"]
+z_index = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="ColorRect" parent="Big/Main/Armor"]
+z_index = -1
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 464.0
+offset_bottom = 568.0
+color = Color(0.845073, 0.675418, 0.453047, 1)
+
+[node name="Frame" type="ColorRect" parent="Big/Main/Armor"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 112.0
+offset_right = 352.0
+offset_bottom = 296.0
+color = Color(0.396078, 0.262745, 0.129412, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Big/Main/Armor/Frame"]
+z_index = 1
+position = Vector2(76, 92)
+scale = Vector2(4.75, 5)
+texture = ExtResource("4_7kp0b")
+
+[node name="Support" type="Control" parent="Big/Main/Armor"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Big/Main/Armor/Support"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 312.0
+offset_right = 192.0
+offset_bottom = 352.0
+theme_override_fonts/font = ExtResource("1_cxp4p")
+theme_override_font_sizes/font_size = 40
+text = "Name:"
+
+[node name="des_" type="RichTextLabel" parent="Big/Main/Armor"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 352.0
+offset_right = 440.0
+offset_bottom = 504.0
+theme_override_fonts/normal_font = ExtResource("1_cxp4p")
+theme_override_font_sizes/normal_font_size = 30
+text = "des. : A strange blue sword. Its Blade is very sharp. Maybe it was created by an talent blacksmith. Maybe? "
+fit_content = true
+scroll_active = false
+
 [node name="ColorRect" type="ColorRect" parent="Big"]
-visible = false
 z_index = 10
 layout_mode = 0
-offset_right = 1154.0
+offset_left = 8.0
+offset_right = 1162.0
 offset_bottom = 650.0
 color = Color(0, 0, 0, 0.470588)
 
@@ -559,3 +617,12 @@ libraries = {
 "": SubResource("AnimationLibrary_gwh60")
 }
 autoplay = "show"
+
+[node name="unequip" type="Button" parent="."]
+z_index = 4096
+offset_left = 208.0
+offset_top = 512.0
+offset_right = 336.0
+offset_bottom = 560.0
+theme = ExtResource("5_v5yi1")
+text = "DIDDY"
