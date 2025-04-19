@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://8ck28afxobnt"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://scripts/globals/player/playerData.gd" id="1_hmmkv"]
 
 [resource]
 script = ExtResource("1_hmmkv")
-position = Vector2(82.9944, 50.497)
+position = Vector2(103.206, 24.0851)
 current_map_path = "res://scenes/levels/level1.tscn"
 money = 20398901757618
 defeated_ID_player = [172]
