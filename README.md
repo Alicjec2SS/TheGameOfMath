@@ -4,13 +4,6 @@
 > A turn-based brainy RPG where math is your weapon.  
 > Answer correctly to deal damage, earn EXP, unlock skills, and outsmart your enemies!
 
----
-
-## 📸 Screenshots
-
-*(Add your gameplay screenshots or GIFs here)*  
-![Gameplay Screenshot](images/screenshot1.png)  
-![Inventory System](images/screenshot2.png)
 
 ---
 
@@ -41,6 +34,7 @@
 ```bash
 git clone https://github.com/yourusername/thegameofmath.git
 cd thegameofmath
+```
 
 Then run it with godot(cuz it haven't done :))))
 
