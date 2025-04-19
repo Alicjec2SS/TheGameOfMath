@@ -36,7 +36,7 @@
 
 
 ```bash
-git clone https://github.com/yourusername/thegameofmath.git
+git clone https://github.com/Alicjec2SS/TheGameOfMath.git
 cd thegameofmath
 ```
 
