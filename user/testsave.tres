@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://cbduiug3dj5q7"]
 
 [ext_resource type="Script" path="res://scripts/globals/player/playerData.gd" id="1_hmmkv"]
 
@@ -10,13 +10,13 @@ money = 20398901757618
 defeated_ID_player = [172]
 HP = 13
 DMG = 26
-EXP = 92233721338244936
-LVL = 80
+EXP = 624099
+LVL = 79
 name = "Alice"
-MAX_HP = 83
+MAX_HP = 82
 mana = 100
-MAX_MANA = 10833.0
-DEF = 60
+MAX_MANA = 10632.0
+DEF = 59
 enabled_skills = [0, 1, 2, 3, 4, 5, 6]
 current_skill = 0
 waiting_items_effect = Array[int]([])

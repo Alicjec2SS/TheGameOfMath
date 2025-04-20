@@ -6,6 +6,25 @@ extends Control
 @onready var anim = $anim
 var current_anim = "idle"  # Lưu trạng thái animation hiện tại
 
+func format_short_number(num: float) -> String:
+	var abs_num = abs(num)
+	var suffix := ""
+	var value := num
+
+	if abs_num >= 1_000_000_000:
+		suffix = "B"
+		value = num / 1_000_000_000.0
+	elif abs_num >= 1_000_000:
+		suffix = "M"
+		value = num / 1_000_000.0
+	elif abs_num >= 1_000:
+		suffix = "K"
+		value = num / 1_000.0
+	else:
+		return str(int(num))  # hoặc dùng "%.1f" % num nếu bạn vẫn muốn có số thập phân nhỏ
+
+	return "%.1f%s" % [value, suffix]
+
 
 func _process(delta):
 	mana.min_value = 0
@@ -23,7 +42,7 @@ func _process(delta):
 		set_animation("idle")
 	$Name.text = global.playerData.name
 	$LVL.text = str(global.playerData.LVL)
-	$Coin.text = str(global.playerData.money) + "G"
+	$Coin.text = str(format_short_number(global.playerData.money)) + "G"
 	$HP.text = str(global.playerData.HP)+"/"+str(global.playerData.MAX_HP)
 	$MP.text = str(global.playerData.mana)+"/"+str(global.playerData.MAX_MANA)
 
