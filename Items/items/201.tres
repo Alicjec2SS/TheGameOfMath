@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://yb8em4lc8mg8"]
+
+[ext_resource type="Script" path="res://Items/inventory_item.gd" id="1_hcjps"]
+[ext_resource type="Texture2D" uid="uid://c4pppys2k2w2e" path="res://Items/assets/test/2.png" id="2_cw5l1"]
+
+[resource]
+script = ExtResource("1_hcjps")
+ID = 201
+des = "It shines"
+name = "Diamond Armor"
+texture = ExtResource("2_cw5l1")
+type = "Equipment"
+sell = 500
+rank = "Epic"
+time_effect = false
+duration = -1
+effect_time_space = 1
+add_HP_by_number = 0
+add_HP_by_percentage = -1
+add_MP_by_number = 0
+add_MP_by_percentage = -1
+add_speed_by_number = 0
+add_speed_by_percentage = -1

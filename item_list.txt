@@ -127,7 +127,7 @@ KPI:10 món
 100. Tinh linh học tập: Sau mỗi trận thắng, hồi 75% HP và 75% năng lượng. (C)  
 
 
-
+các item trang bị có ID từ 200 đổ đi
 
 
 

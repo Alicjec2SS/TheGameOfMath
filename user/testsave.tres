@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://cbduiug3dj5q7"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://scripts/globals/player/playerData.gd" id="1_hmmkv"]
 
@@ -22,3 +22,4 @@ current_skill = 0
 waiting_items_effect = Array[int]([])
 add_speed = 0
 speed = 75
+using_equips = [201, 202]

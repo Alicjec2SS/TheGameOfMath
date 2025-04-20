@@ -1,7 +1,13 @@
 extends Node
 
 func get_item(ID):
-	return ResourceLoader.load("res://Items/items/"+ str(ID) + ".tres")#.duplicate(true)
+	if ID:
+		return ResourceLoader.load("res://Items/items/"+ str(ID) + ".tres")#.duplicate(true)
+	else:
+		return null
+	
+func get_equip(ID):
+	return ResourceLoader.load("res://Items/items/eq_"+ str(ID) + ".tres")#.duplicate(true)
 
 func apply_item_effect(item: InvItem) -> void:
 	# Dùng call_deferred để chạy non-blocking

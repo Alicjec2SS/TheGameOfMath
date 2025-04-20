@@ -21,9 +21,14 @@ class_name PlayerData
 
 @export var enabled_skills = [0]
 @export var current_skill = 0
-@export var waiting_items_effect: Array[int] = []
+@export var waiting_items_effect: Array[int] = []#lưu ID các vật phẩm sửa soạn dùng
 @export var add_speed = 0
 @export var speed = 75
+
+@export var using_equips = [201,202]
+#item[0] là armor , item[1] là weapon
+#lưu ID giống waiting_items_effect
+
 
 func recovery(a_HP=0,a_MP=0):
 	if HP + a_HP <= MAX_HP:

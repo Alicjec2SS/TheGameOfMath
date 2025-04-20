@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://btfm0jvappjly"]
+[gd_scene load_steps=20 format=3 uid="uid://btfm0jvappjly"]
 
 [ext_resource type="Script" path="res://scripts/UI_scene/Mini.gd" id="1_c0xmx"]
 [ext_resource type="FontFile" uid="uid://csfxe4gpjf0nh" path="res://fonts/superstar_memesbruh03.ttf" id="1_cxp4p"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bxfekat3kbm60" path="res://settings/player.tres" id="3_n6cpe"]
 [ext_resource type="Texture2D" uid="uid://c4ocom6ke5p2m" path="res://Items/assets/test/1.png" id="4_7kp0b"]
 [ext_resource type="Theme" uid="uid://bu30yd48r1mvj" path="res://settings/unequip.tres" id="5_v5yi1"]
+[ext_resource type="Texture2D" uid="uid://c4pppys2k2w2e" path="res://Items/assets/test/2.png" id="7_06ln0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ou13x"]
 bg_color = Color(0.404512, 0.404511, 0.404511, 1)
@@ -432,6 +433,7 @@ offset_bottom = 40.0
 
 [node name="Label8" type="Label" parent="Big/Main/Equipment/Support"]
 z_index = 4096
+layout_mode = 0
 offset_left = 584.0
 offset_top = 376.0
 offset_right = 699.0
@@ -443,6 +445,7 @@ text = "Armor
 
 [node name="Label9" type="Label" parent="Big/Main/Equipment/Support"]
 z_index = 4096
+layout_mode = 0
 offset_left = 840.0
 offset_top = 376.0
 offset_right = 984.0
@@ -490,25 +493,36 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Big/Main/Armor/Support"]
 layout_mode = 0
-offset_left = 104.0
-offset_top = 312.0
-offset_right = 192.0
-offset_bottom = 352.0
+offset_left = 88.0
+offset_top = 304.0
+offset_right = 176.0
+offset_bottom = 344.0
 theme_override_fonts/font = ExtResource("1_cxp4p")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "Name:"
+horizontal_alignment = 1
 
 [node name="des_" type="RichTextLabel" parent="Big/Main/Armor"]
 layout_mode = 0
-offset_left = 104.0
+offset_left = 112.0
 offset_top = 352.0
-offset_right = 440.0
-offset_bottom = 504.0
+offset_right = 448.0
+offset_bottom = 507.0
 theme_override_fonts/normal_font = ExtResource("1_cxp4p")
 theme_override_font_sizes/normal_font_size = 30
 text = "des. : A strange blue sword. Its Blade is very sharp. Maybe it was created by an talent blacksmith. Maybe? "
 fit_content = true
 scroll_active = false
+
+[node name="Name" type="Label" parent="Big/Main/Armor"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 304.0
+offset_right = 478.0
+offset_bottom = 350.0
+theme_override_fonts/font = ExtResource("1_cxp4p")
+theme_override_font_sizes/font_size = 35
+text = "blade of justice"
 
 [node name="ColorRect" type="ColorRect" parent="Big"]
 z_index = 10
@@ -694,26 +708,29 @@ mouse_filter = 2
 [node name="unequip" type="Button" parent="Input"]
 visible = false
 z_index = 4096
+layout_mode = 0
 offset_left = 208.0
 offset_top = 512.0
 offset_right = 336.0
 offset_bottom = 560.0
 theme = ExtResource("5_v5yi1")
-text = "DIDDY"
+text = "unequip"
 
 [node name="ArmorSlot" type="Button" parent="Input"]
 z_index = 4096
+layout_mode = 0
 offset_left = 576.0
 offset_top = 232.0
 offset_right = 704.0
 offset_bottom = 360.0
-icon = ExtResource("4_7kp0b")
+icon = ExtResource("7_06ln0")
 flat = true
 icon_alignment = 1
 expand_icon = true
 
 [node name="WeaponSlot" type="Button" parent="Input"]
 z_index = 4096
+layout_mode = 0
 offset_left = 848.0
 offset_top = 232.0
 offset_right = 976.0
@@ -722,3 +739,6 @@ icon = ExtResource("4_7kp0b")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[connection signal="pressed" from="Input/ArmorSlot" to="Big/Main" method="_on_armor_slot_pressed"]
+[connection signal="pressed" from="Input/WeaponSlot" to="Big/Main" method="_on_weapon_slot_pressed"]

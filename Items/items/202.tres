@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://b0uvljwpdcv0h"]
+
+[ext_resource type="Script" path="res://Items/inventory_item.gd" id="1_fkyrv"]
+[ext_resource type="Texture2D" uid="uid://c4ocom6ke5p2m" path="res://Items/assets/test/1.png" id="2_6utxd"]
+
+[resource]
+script = ExtResource("1_fkyrv")
+ID = 202
+des = " A strange blue sword. Its Blade is very sharp. Maybe it was created by an talent blacksmith. Maybe? "
+name = "Blade Of Justice"
+texture = ExtResource("2_6utxd")
+type = "Weapon"
+sell = 9999
+rank = "Legendary"
+time_effect = false
+duration = -1
+effect_time_space = 1
+add_HP_by_number = 0
+add_HP_by_percentage = -1
+add_MP_by_number = 0
+add_MP_by_percentage = -1
+add_speed_by_number = 0
+add_speed_by_percentage = -1
