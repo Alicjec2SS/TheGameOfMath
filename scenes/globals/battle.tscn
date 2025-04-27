@@ -540,6 +540,7 @@ color = Color(0.427493, 0.427493, 0.427493, 1)
 
 [node name="AnswerBox" type="LineEdit" parent="."]
 visible = false
+z_index = 999
 offset_left = 318.0
 offset_top = 509.0
 offset_right = 959.0
@@ -551,6 +552,7 @@ secret_character = "*"
 
 [node name="Button" type="Button" parent="."]
 visible = false
+z_index = 999
 offset_left = 992.0
 offset_top = 466.0
 offset_right = 1108.0

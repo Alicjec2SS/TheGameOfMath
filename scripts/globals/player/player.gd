@@ -16,6 +16,8 @@ var last_state = "down"#đặt last state quyết định anchor cho engine 8 h�
 
 #biến tĩnh (các obj)
 @onready var Anim = $AnimatedSprite2D
+@onready var UI = $UI
+
 
 func ready():
 	self.global_position.x = Transporter.next_pos.x
@@ -36,7 +38,7 @@ func move(delta):
 		direction.x = -1
 	if Input.is_action_pressed("right"):
 		direction.x = 1
-	
+
 
 	#biến dữ liệu của direction thành velocity
 	if global.can_move:

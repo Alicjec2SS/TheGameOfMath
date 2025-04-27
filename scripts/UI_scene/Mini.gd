@@ -34,7 +34,7 @@ func _process(delta):
 	HP.min_value = 0
 	HP.max_value = global.playerData.MAX_HP
 	HP.value = global.playerData.HP
-	if not self.visible:
+	if not self.visible and not $"../Big/Main".visible:
 		$"../anim".play("show")
 	if $"../..".velocity != Vector2(0,0):
 		set_animation("walking")
