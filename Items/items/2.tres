@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=2 format=3 uid="uid://cyfy6jmi5fldd"]
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cyfy6jmi5fldd"]
 
 [ext_resource type="Script" path="res://Items/inventory_item.gd" id="1_50mml"]
+[ext_resource type="Texture2D" uid="uid://bco4t1ey0fkpm" path="res://addons/dialogic/Modules/Condition/icon.svg" id="2_fpge1"]
 
 [resource]
 script = ExtResource("1_50mml")
 ID = 2
 des = "+5HP"
 name = "Dry Bread"
+texture = ExtResource("2_fpge1")
 type = "Consumable item"
 sell = 15
 rank = "Common"

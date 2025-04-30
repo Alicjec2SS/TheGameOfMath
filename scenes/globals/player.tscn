@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://scripts/globals/player/InteractFinder.gd" id="15_j3hyj"]
 [ext_resource type="PackedScene" uid="uid://cng13403pftyj" path="res://scenes/globals/battle.tscn" id="16_pdb22"]
 [ext_resource type="PackedScene" uid="uid://c4i31uqt0chg8" path="res://scenes/globals/training.tscn" id="18_m8jbn"]
-[ext_resource type="PackedScene" uid="uid://btfm0jvappjly" path="res://scenes/globals/ui.tscn" id="19_cujy5"]
+[ext_resource type="PackedScene" uid="uid://btfm0jvappjly" path="res://scenes/UI/ui.tscn" id="19_cujy5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhmxt"]
 

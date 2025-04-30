@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=2 format=3 uid="uid://dgh1ujom4e71f"]
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dgh1ujom4e71f"]
 
 [ext_resource type="Script" path="res://Items/inventory_item.gd" id="1_uxsku"]
+[ext_resource type="Texture2D" uid="uid://dxm750fthk86h" path="res://assets/UI/RedHeart.png" id="2_0aylb"]
 
 [resource]
 script = ExtResource("1_uxsku")
 ID = 1
 des = "+3 HP"
 name = "Filtered water"
+texture = ExtResource("2_0aylb")
 type = "Consumable item"
 sell = 10
 rank = "Common"

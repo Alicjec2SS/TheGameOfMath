@@ -1,10 +1,13 @@
 extends Node
 
-func get_item(ID):
-	if ID:
-		return ResourceLoader.load("res://Items/items/"+ str(ID) + ".tres")#.duplicate(true)
+
+func get_item(ID:int):
+	var path = "res://Items/items/" + str(ID) + ".tres"
+	if ID and FileAccess.file_exists(path):
+		return load(path)
 	else:
-		return null
+		return load("res://Items/items/ERROR.tres")
+
 	
 func get_equip(ID):
 	return ResourceLoader.load("res://Items/items/eq_"+ str(ID) + ".tres")#.duplicate(true)

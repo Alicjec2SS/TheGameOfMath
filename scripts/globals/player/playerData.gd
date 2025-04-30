@@ -29,6 +29,9 @@ class_name PlayerData
 #item[0] là armor , item[1] là weapon
 #lưu ID giống waiting_items_effect
 
+#lưu inventory vào mảng invetory:Array[int:ID] = []
+@export var inventory:Array[int] = []
+
 
 func recovery(a_HP=0,a_MP=0):
 	if HP + a_HP <= MAX_HP:

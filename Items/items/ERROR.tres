@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=2 format=3 uid="uid://wrmfcnnrkk5g"]
+
+[ext_resource type="Script" path="res://Items/inventory_item.gd" id="1_0x4ek"]
+
+[resource]
+script = ExtResource("1_0x4ek")
+ID = 0
+des = "An error item, cannot be used"
+name = "ErROr EgG"
+type = "Error"
+sell = 0
+rank = "None"
+time_effect = false
+duration = -1
+effect_time_space = 1
+add_HP_by_number = 0
+add_HP_by_percentage = -1
+add_MP_by_number = 0
+add_MP_by_percentage = -1
+add_speed_by_number = 0
+add_speed_by_percentage = -1
