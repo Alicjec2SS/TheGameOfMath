@@ -11,6 +11,7 @@ class_name InvItem
 @export var type:String = "Consumable item"
 @export var sell:int = 10
 @export var rank:String = "Common"
+@export var stackable = true
 #thông số hiệu ứng
 
 #recently effect

@@ -18,6 +18,7 @@ func _ready():
 			var scale_factor = min(slot_size.x / tex_size.x, slot_size.y / tex_size.y)
 			Icon.scale = Vector2(scale_factor, scale_factor)
 			Icon.position = slot_size / 2  # Canh giữa
+			Icon.position.x += 25
 		Name.text = converted_item.name
 		
 

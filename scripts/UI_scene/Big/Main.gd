@@ -1,7 +1,6 @@
 extends Control
 
 var showing_item = ""
-var is_transitioning = false  # Biến trạng thái để tránh gọi hàm chuyển cảnh lặp lại
 
 func format_short_number(num: float) -> String:
 	var abs_num = abs(num)
@@ -27,22 +26,8 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("backpack") and not is_transitioning:  # Kiểm tra spam phím
-		is_transitioning = true  # Đánh dấu đang trong quá trình chuyển cảnh
-		if self.visible:
-			await _end()
-		else:
-			await _show()
-		is_transitioning = false  # Kết thúc quá trình chuyển cảnh
-		
-	if not self.visible:
-		if not global.is_interacting and global.can_move:
-			global.can_move = true
-			global.is_interacting = false
-		return
+	if not self.visible:return
 	
-	global.can_move = false
-	global.is_interacting = true
 	$PlayerInfo/HP_Bar.min_value = 0
 	$PlayerInfo/HP_Bar.max_value = global.playerData.MAX_HP
 	$PlayerInfo/HP_Bar.value = global.playerData.HP
@@ -78,7 +63,6 @@ func _process(delta):
 		$PlayerInfo/EXP_Bar.max_value = 100
 		$PlayerInfo/EXP_Bar.value = 100
 		$PlayerInfo/EXP_Bar/EXP.text = "MAX"
-	print(showing_item)
 
 func _on_armor_slot_pressed():
 	var temp = EffectManager.get_item(global.playerData.using_equips[0])
@@ -125,14 +109,4 @@ func _on_weapon_slot_pressed():
 
 
 
-func _show():
-	if not self.visible:
-		self.show()
-		$"../../BIG_anim".play("start")
-		await get_tree().create_timer(1).timeout
-		
-func _end():
-	if self.visible:
-		$"../../BIG_anim".play("end")
-		await get_tree().create_timer(1).timeout
-		self.hide()
+

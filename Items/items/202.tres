@@ -12,6 +12,7 @@ texture = ExtResource("2_6utxd")
 type = "Weapon"
 sell = 9999
 rank = "Legendary"
+stackable = true
 time_effect = false
 duration = -1
 effect_time_space = 1

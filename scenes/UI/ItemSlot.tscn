@@ -23,6 +23,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 576.0
 offset_bottom = 80.0
+mouse_filter = 2
 theme = SubResource("Theme_a4acj")
 script = ExtResource("2_ndcfo")
 
@@ -35,18 +36,17 @@ texture = ExtResource("3_bacj8")
 [node name="Name" type="Label" parent="."]
 z_index = 4096
 layout_mode = 0
-offset_left = 112.0
+offset_left = 128.0
 offset_top = 16.0
-offset_right = 536.0
+offset_right = 586.0
 offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("2_s6r74")
 theme_override_font_sizes/font_size = 45
-text = "
-"
+text = "Blade of justice"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 576.0
+offset_right = 536.0
 offset_bottom = 80.0
 theme = SubResource("Theme_krtg4")
 

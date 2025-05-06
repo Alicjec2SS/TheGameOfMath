@@ -3,10 +3,14 @@ extends Node
 
 func get_item(ID:int):
 	var path = "res://Items/items/" + str(ID) + ".tres"
+	var item: InvItem
 	if ID and FileAccess.file_exists(path):
-		return load(path)
+		item = load(path)
 	else:
-		return load("res://Items/items/ERROR.tres")
+		item = load("res://Items/items/ERROR.tres")
+	
+	return item.duplicate()
+
 
 	
 func get_equip(ID):

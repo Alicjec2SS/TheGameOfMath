@@ -10,6 +10,7 @@ name = "ErROr EgG"
 type = "Error"
 sell = 0
 rank = "None"
+stackable = false
 time_effect = false
 duration = -1
 effect_time_space = 1
