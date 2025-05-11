@@ -1,7 +1,7 @@
 extends Node
 
 
-func get_item(ID:int):
+func get_item(ID):
 	var path = "res://Items/items/" + str(ID) + ".tres"
 	var item: InvItem
 	if ID and FileAccess.file_exists(path):

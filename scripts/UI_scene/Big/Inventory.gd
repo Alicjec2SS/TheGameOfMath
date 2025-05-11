@@ -38,15 +38,14 @@ func merge_inventory(inventory_array: Array) -> Dictionary:
 	var inventory_dict := {}
 	var unstackable_index := 0
 
-	for item in inventory_array:
+	for i in range(inventory_array.size()):
+		var item = inventory_array[i]
+
+		
 		if not (item is InvItem):
+
 			continue
 
-		# Nếu item có ID == 0, xử lý đặc biệt (không stackable)
-		#if item.ID == 0:
-		#	continue
-
-		# Nếu vật phẩm stackable, cộng dồn số lượng
 		if item.stackable:
 			if inventory_dict.has(item.ID):
 				inventory_dict[item.ID]["count"] += 1
@@ -55,7 +54,6 @@ func merge_inventory(inventory_array: Array) -> Dictionary:
 					"item": item,
 					"count": 1
 				}
-		# Nếu vật phẩm không stackable (mỗi item là một mục riêng)
 		else:
 			var unique_key = str(item.ID) + "_" + str(unstackable_index)
 			inventory_dict[unique_key] = {
@@ -64,14 +62,21 @@ func merge_inventory(inventory_array: Array) -> Dictionary:
 			}
 			unstackable_index += 1
 
+	
 	return inventory_dict
 
-
-func get_data(itemID: int):
-	var conv_item = EffectManager.get_item(itemID)
-	if conv_item == null:
+func get_data(ItemID: int):
+	var conv_item = EffectManager.get_item(ItemID)
+	if conv_item == null or not ItemID in global.playerData.inventory:
+		$Armor/Frame.hide()
+		$Armor/Support.hide()
+		$Armor/des_.hide()
+		$Armor/Name.hide()
+		$Armor/quantity.hide()
+		$Armor/equip.hide()
 		return
 	
+	$Armor/equip.itemID = ItemID
 	$Armor/Frame.show()
 	$Armor/Support/Label.show()
 
@@ -86,12 +91,13 @@ func get_data(itemID: int):
 	var Squantity
 	var Sitem
 	
+
 	if conv_item.stackable:
-		Sitem = merged_inventory[itemID]["item"]
-		Squantity= merged_inventory[itemID]["count"]
+		Sitem = merged_inventory[ItemID]["item"]
+		Squantity= merged_inventory[ItemID]["count"]
 	else:
-		Sitem = merged_inventory[str(itemID) + "_" + str(0)]["item"]
-		Squantity = merged_inventory[str(itemID) + "_" + str(0)]["count"]
+		Sitem = merged_inventory[str(ItemID) + "_" + str(0)]["item"]
+		Squantity = merged_inventory[str(ItemID) + "_" + str(0)]["count"]
 	
 	
 	var quantity_label = $Armor/quantity
@@ -116,29 +122,38 @@ func _process(delta):
 		for child in slots.get_children():
 			child.queue_free()
 	if self.visible and slots.get_child_count() == 0:
-		var raw_items: Array = []
-		for item_id in global.playerData.inventory:
-			var item = EffectManager.get_item(item_id)
-			if item != null:
-				raw_items.append(item)
+		_update_inventory()
 
-		merged_inventory = merge_inventory(raw_items)
+func _update_inventory():
+	var raw_items: Array = []
+	for item_id in global.playerData.inventory:
+		var item = EffectManager.get_item(item_id)
+		if item != null:
+			raw_items.append(item)
+	
+	print(global.playerData.inventory)
+	merged_inventory = merge_inventory(raw_items)
+	
+	for i in slots.get_children():
+		i.queue_free()
 		
+	print(merged_inventory.values())
+	for data in merged_inventory.values():
+		var Sitem = data["item"]
+		var Squantity = data["count"]
+		print(data)
 		
-		for data in merged_inventory.values():
-			var Sitem = data["item"]
-			var Squantity = data["count"]
+		var new_slot = ItemSlot.instantiate()
+		new_slot.itemID = Sitem.ID
 
-			var new_slot = ItemSlot.instantiate()
-			new_slot.itemID = Sitem.ID
+		var icon_node = new_slot.get_node("Icon")
+		if icon_node.texture:
+			var tex_size = icon_node.texture.get_size()
+			var scale_factor = min(32.0 / tex_size.x, 32.0 / tex_size.y)
+			icon_node.scale = Vector2(scale_factor, scale_factor)
+			icon_node.position = Vector2(16, 16)
 
-			# Scale icon nếu có
-			var icon_node = new_slot.get_node("Icon")
-			if icon_node.texture:
-				var tex_size = icon_node.texture.get_size()
-				var scale_factor = min(32.0 / tex_size.x, 32.0 / tex_size.y)
-				icon_node.scale = Vector2(scale_factor, scale_factor)
-				icon_node.position = Vector2(16, 16)
+		slots.add_child(new_slot)
+	slots.add_child(ItemSlot.instantiate())
 
-			slots.add_child(new_slot)
-
+	await get_tree().process_frame

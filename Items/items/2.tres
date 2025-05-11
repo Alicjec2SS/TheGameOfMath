@@ -12,6 +12,7 @@ texture = ExtResource("2_fpge1")
 type = "Consumable item"
 sell = 15
 rank = "Common"
+stackable = true
 time_effect = false
 duration = -1
 effect_time_space = 1

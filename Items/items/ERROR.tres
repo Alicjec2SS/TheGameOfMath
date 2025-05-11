@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=2 format=3 uid="uid://wrmfcnnrkk5g"]
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://wrmfcnnrkk5g"]
 
 [ext_resource type="Script" path="res://Items/inventory_item.gd" id="1_0x4ek"]
+[ext_resource type="Texture2D" uid="uid://d3xdwod0qrf4s" path="res://Items/assets/0-removebg-preview.png" id="2_neop7"]
 
 [resource]
 script = ExtResource("1_0x4ek")
 ID = 0
 des = "An error item, cannot be used"
 name = "ErROr EgG"
+texture = ExtResource("2_neop7")
 type = "Error"
 sell = 0
 rank = "None"

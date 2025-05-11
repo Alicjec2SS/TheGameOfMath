@@ -47,11 +47,19 @@ func _process(delta):
 	
 	var exp_cap = int(pow(global.playerData.LVL, 2) * 100)
 	
-	var temp = [EffectManager.get_item(global.playerData.using_equips[0]),EffectManager.get_item(global.playerData.using_equips[1])]
-	
+	var temp
+	if global.playerData.using_equips[0] != null:
+		temp = [EffectManager.get_item(global.playerData.using_equips[0])]
+	else:
+		temp = [null]
+	if global.playerData.using_equips[1] != null:
+		temp.append(EffectManager.get_item(global.playerData.using_equips[1]))
+	else:
+		temp.append(null)
+		
 	if $"../../BigInput/ArmorSlot" and $"../../BigInput/WeaponSlot":
-		$"../../BigInput/ArmorSlot".icon = temp[0].texture
-		$"../../BigInput/WeaponSlot".icon = temp[1].texture
+		$"../../BigInput/ArmorSlot".icon = temp[0].texture if temp[0] else null
+		$"../../BigInput/WeaponSlot".icon = temp[1].texture if temp[1] else null
 	
 	if global.playerData.LVL < 80:
 		$PlayerInfo/EXP_Bar.min_value = 0
@@ -65,7 +73,7 @@ func _process(delta):
 		$PlayerInfo/EXP_Bar/EXP.text = "MAX"
 
 func _on_armor_slot_pressed():
-	var temp = EffectManager.get_item(global.playerData.using_equips[0])
+	var temp = EffectManager.get_item(global.playerData.using_equips[0]) if global.playerData.using_equips[0] else null
 	if not temp:
 		return
 
@@ -73,21 +81,21 @@ func _on_armor_slot_pressed():
 		# Nếu đang xem Armor rồi, bấm lại thì tắt đi -> hiện PlayerInfo
 		showing_item = ""
 		$Armor.hide()
-		$"../../BigInput/unequip".hide()
+		$Armor/unequip.hide()
 		$PlayerInfo.show()
 	else:
 		# Đang xem cái khác (Weapon hoặc PlayerInfo) -> chuyển sang Armor
 		showing_item = "armor"
 		$PlayerInfo.hide()
 		$Armor.show()
-		$"../../BigInput/unequip".show()
+		$Armor/unequip.show()
 		$Armor/Name.text = temp.name
 		$Armor/des_.text = "des. : " + temp.des
 		$Armor/Frame/Sprite2D.texture = temp.texture
 
 
 func _on_weapon_slot_pressed():
-	var temp = EffectManager.get_item(global.playerData.using_equips[1])
+	var temp = EffectManager.get_item(global.playerData.using_equips[1]) if global.playerData.using_equips[1] else null
 	if not temp:
 		return
 
@@ -95,14 +103,14 @@ func _on_weapon_slot_pressed():
 		# Nếu đang xem Weapon rồi, bấm lại thì tắt đi -> hiện PlayerInfo
 		showing_item = ""
 		$Armor.hide()
-		$"../../BigInput/unequip".hide()
+		$Armor/unequip.hide()
 		$PlayerInfo.show()
 	else:
 		# Đang xem cái khác (Armor hoặc PlayerInfo) -> chuyển sang Weapon
 		showing_item = "weapon"
 		$PlayerInfo.hide()
 		$Armor.show()
-		$"../../BigInput/unequip".show()
+		$Armor/unequip.show()
 		$Armor/Name.text = temp.name
 		$Armor/des_.text = "des. : " + temp.des
 		$Armor/Frame/Sprite2D.texture = temp.texture
