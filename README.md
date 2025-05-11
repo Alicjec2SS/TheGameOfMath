@@ -38,8 +38,10 @@
 ```bash
 git clone https://github.com/Alicjec2SS/TheGameOfMath.git
 cd thegameofmath
+"path/to/your/godot/4.2.2" --path "path/from/hard/disk/to/TheGameOfMath"
 ```
 
-Then run it with godot(cuz it haven't done yet :)))) )
-
+## Note:
+Must run it with godot(cuz it haven't done yet :)))) ) 
+That bash does not support Linux or Mac (maybe later)
 
