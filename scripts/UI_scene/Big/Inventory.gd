@@ -4,6 +4,7 @@ extends Control
 @onready var slots = $"../../SemiInput/Items/VBoxContainer"
 
 var merged_inventory: Dictionary
+var itemID 
 
 func _ready():
 	if self.visible and slots.get_child_count() == 0:
@@ -66,8 +67,10 @@ func merge_inventory(inventory_array: Array) -> Dictionary:
 	return inventory_dict
 
 func get_data(ItemID: int):
+	itemID = ItemID
 	var conv_item = EffectManager.get_item(ItemID)
 	if conv_item == null or not ItemID in global.playerData.inventory:
+		$Armor.hide()
 		$Armor/Frame.hide()
 		$Armor/Support.hide()
 		$Armor/des_.hide()
@@ -76,6 +79,7 @@ func get_data(ItemID: int):
 		$Armor/equip.hide()
 		return
 	
+	$Armor.show()
 	$Armor/equip.itemID = ItemID
 	$Armor/Frame.show()
 	$Armor/Support/Label.show()

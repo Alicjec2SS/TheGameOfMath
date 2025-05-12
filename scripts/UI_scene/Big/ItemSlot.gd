@@ -33,3 +33,4 @@ func _process(delta):
 
 func _on_button_pressed():
 	$"../../../../Big/Inventory".get_data(itemID)
+		

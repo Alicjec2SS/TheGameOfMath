@@ -1,0 +1,183 @@
+[gd_scene load_steps=12 format=3 uid="uid://l7aw434q4fo6"]
+
+[ext_resource type="Texture2D" uid="uid://dwtn4t287g4n7" path="res://assets/UI/DayNightIcon/3 Noon/1.png" id="1_kdy1r"]
+[ext_resource type="Texture2D" uid="uid://bjr2xi4ytt4p8" path="res://assets/UI/DayNightIcon/3 Noon/2.png" id="2_6lr21"]
+[ext_resource type="Texture2D" uid="uid://mamd7iarpdkx" path="res://assets/UI/DayNightIcon/3 Noon/3.png" id="3_lu6qg"]
+[ext_resource type="Texture2D" uid="uid://b1ii6v32ojkuh" path="res://assets/UI/DayNightIcon/3 Noon/4.png" id="4_cbh1w"]
+[ext_resource type="Texture2D" uid="uid://us34kkm17k3o" path="res://assets/UI/DayNightIcon/3 Noon/5.png" id="5_vcjmv"]
+[ext_resource type="Texture2D" uid="uid://b4nru75622ktr" path="res://assets/UI/DayNightIcon/3 Noon/6.png" id="6_chpww"]
+[ext_resource type="Texture2D" uid="uid://daky6ggea23g0" path="res://assets/UI/DayNightIcon/3 Noon/7.png" id="7_h3tbl"]
+[ext_resource type="Texture2D" uid="uid://ifkt2khirlk3" path="res://assets/UI/DayNightIcon/3 Noon/8.png" id="8_jubby"]
+[ext_resource type="Texture2D" uid="uid://bgbkqefrlhywo" path="res://assets/UI/DayNightIcon/3 Noon/9.png" id="9_sbl1p"]
+[ext_resource type="Texture2D" uid="uid://e83y61qxjkdu" path="res://assets/UI/DayNightIcon/3 Noon/10.png" id="10_k68lx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc51y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"dawn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"day",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"night",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kdy1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6lr21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lu6qg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cbh1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vcjmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_chpww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h3tbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jubby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sbl1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_k68lx")
+}],
+"loop": true,
+"name": &"noon",
+"speed": 5.0
+}]
+
+[node name="DaylightIcon" type="CanvasLayer"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(877, 51)
+sprite_frames = SubResource("SpriteFrames_sc51y")
+animation = &"noon"
+frame_progress = 0.78248
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1063, 54)
+scale = Vector2(3.5, 2.9375)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(952, 54)
+scale = Vector2(3.46875, 2.9375)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 916.0
+offset_top = 27.0
+offset_right = 1094.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 50
+text = "6:30
+"
+horizontal_alignment = 1
+vertical_alignment = 1

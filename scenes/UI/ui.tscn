@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://btfm0jvappjly"]
+[gd_scene load_steps=75 format=3 uid="uid://btfm0jvappjly"]
 
 [ext_resource type="Script" path="res://scripts/UI_scene/Big/Main.gd" id="1_fv3pp"]
 [ext_resource type="SpriteFrames" uid="uid://bxfekat3kbm60" path="res://settings/player.tres" id="2_te8lq"]
@@ -11,6 +11,50 @@
 [ext_resource type="Texture2D" uid="uid://c4pppys2k2w2e" path="res://Items/assets/test/2.png" id="7_xmshu"]
 [ext_resource type="Theme" uid="uid://blvj35xg0ltfr" path="res://settings/equip.tres" id="9_mfrft"]
 [ext_resource type="Script" path="res://scripts/UI_scene/Big/equip.gd" id="10_yi3lb"]
+[ext_resource type="Texture2D" uid="uid://dwtn4t287g4n7" path="res://assets/UI/DayNightIcon/3 Noon/1.png" id="12_7gq4p"]
+[ext_resource type="Texture2D" uid="uid://boevevaobnboi" path="res://assets/UI/DayNightIcon/1 Dawn/1.png" id="12_oydn3"]
+[ext_resource type="Script" path="res://scripts/UI_scene/Clock.gd" id="12_rgnyy"]
+[ext_resource type="Texture2D" uid="uid://bjr2xi4ytt4p8" path="res://assets/UI/DayNightIcon/3 Noon/2.png" id="13_muyrn"]
+[ext_resource type="Texture2D" uid="uid://cqf6up85q2mbr" path="res://assets/UI/DayNightIcon/1 Dawn/2.png" id="13_nbik1"]
+[ext_resource type="Texture2D" uid="uid://mamd7iarpdkx" path="res://assets/UI/DayNightIcon/3 Noon/3.png" id="14_vhynj"]
+[ext_resource type="Texture2D" uid="uid://brkurxmhcg1si" path="res://assets/UI/DayNightIcon/1 Dawn/3.png" id="14_yc15w"]
+[ext_resource type="Texture2D" uid="uid://b1ii6v32ojkuh" path="res://assets/UI/DayNightIcon/3 Noon/4.png" id="15_1bqnr"]
+[ext_resource type="Texture2D" uid="uid://dlcm8i2pq7w6w" path="res://assets/UI/DayNightIcon/1 Dawn/4.png" id="15_h6lnm"]
+[ext_resource type="Texture2D" uid="uid://bo86qo1urodw" path="res://assets/UI/DayNightIcon/1 Dawn/5.png" id="16_avnn5"]
+[ext_resource type="Texture2D" uid="uid://us34kkm17k3o" path="res://assets/UI/DayNightIcon/3 Noon/5.png" id="16_gdi0a"]
+[ext_resource type="Texture2D" uid="uid://rp0irmj75mha" path="res://assets/UI/DayNightIcon/1 Dawn/6.png" id="17_h0yy5"]
+[ext_resource type="Texture2D" uid="uid://b4nru75622ktr" path="res://assets/UI/DayNightIcon/3 Noon/6.png" id="17_tftdl"]
+[ext_resource type="Texture2D" uid="uid://daky6ggea23g0" path="res://assets/UI/DayNightIcon/3 Noon/7.png" id="18_7iujm"]
+[ext_resource type="Texture2D" uid="uid://gdfo1af26ykw" path="res://assets/UI/DayNightIcon/1 Dawn/7.png" id="18_3013n"]
+[ext_resource type="Texture2D" uid="uid://ifkt2khirlk3" path="res://assets/UI/DayNightIcon/3 Noon/8.png" id="19_u5oyb"]
+[ext_resource type="Texture2D" uid="uid://bgtx8gj00oc6f" path="res://assets/UI/DayNightIcon/1 Dawn/8.png" id="19_ues6w"]
+[ext_resource type="Texture2D" uid="uid://dasct47pok6wh" path="res://assets/UI/DayNightIcon/1 Dawn/9.png" id="20_3x8xh"]
+[ext_resource type="Texture2D" uid="uid://bgbkqefrlhywo" path="res://assets/UI/DayNightIcon/3 Noon/9.png" id="20_77ouj"]
+[ext_resource type="Texture2D" uid="uid://e83y61qxjkdu" path="res://assets/UI/DayNightIcon/3 Noon/10.png" id="21_7vebo"]
+[ext_resource type="Texture2D" uid="uid://dwe4ky7ipvfu8" path="res://assets/UI/DayNightIcon/1 Dawn/10.png" id="21_sbql5"]
+[ext_resource type="Texture2D" uid="uid://d0o0ilr47xagi" path="res://assets/UI/DayNightIcon/2 Day/1.png" id="22_36240"]
+[ext_resource type="Texture2D" uid="uid://c2155m0s78iil" path="res://assets/UI/DayNightIcon/2 Day/2.png" id="23_ddoqs"]
+[ext_resource type="Texture2D" uid="uid://vcwq2rr50mm6" path="res://assets/UI/DayNightIcon/2 Day/3.png" id="24_g1maa"]
+[ext_resource type="Texture2D" uid="uid://bc4sqsbkv5k1y" path="res://assets/UI/DayNightIcon/2 Day/4.png" id="25_i2w3k"]
+[ext_resource type="Texture2D" uid="uid://ccju3abdfblny" path="res://assets/UI/DayNightIcon/2 Day/5.png" id="26_16spx"]
+[ext_resource type="Texture2D" uid="uid://cahvqaa4yiga6" path="res://assets/UI/DayNightIcon/2 Day/6.png" id="27_pmrjy"]
+[ext_resource type="Texture2D" uid="uid://g6rixadwl0vi" path="res://assets/UI/DayNightIcon/2 Day/7.png" id="28_k02g2"]
+[ext_resource type="Texture2D" uid="uid://dc0xsmv12jk44" path="res://assets/UI/DayNightIcon/2 Day/8.png" id="29_onneh"]
+[ext_resource type="Texture2D" uid="uid://dgf2ci3yx4g5d" path="res://assets/UI/DayNightIcon/2 Day/9.png" id="30_rm3jw"]
+[ext_resource type="Texture2D" uid="uid://dmhcvcptdy5cj" path="res://assets/UI/DayNightIcon/2 Day/10.png" id="31_ycwxu"]
+[ext_resource type="Texture2D" uid="uid://dx71xtc5jq8l3" path="res://assets/UI/DayNightIcon/4 Night/1.png" id="32_iyytb"]
+[ext_resource type="Texture2D" uid="uid://dfeo53raqem18" path="res://assets/UI/DayNightIcon/4 Night/2.png" id="33_5wyht"]
+[ext_resource type="Texture2D" uid="uid://byct0iyg2gphf" path="res://assets/UI/DayNightIcon/4 Night/3.png" id="34_wcafd"]
+[ext_resource type="Texture2D" uid="uid://c1b27g7j1w1vp" path="res://assets/UI/DayNightIcon/4 Night/4.png" id="35_sp75n"]
+[ext_resource type="Texture2D" uid="uid://by1se8rem4c86" path="res://assets/UI/DayNightIcon/4 Night/5.png" id="36_wmjpx"]
+[ext_resource type="Texture2D" uid="uid://dk6nyawsoxwo1" path="res://assets/UI/DayNightIcon/4 Night/6.png" id="37_cr5ey"]
+[ext_resource type="Texture2D" uid="uid://btui87bhagawe" path="res://assets/UI/DayNightIcon/4 Night/7.png" id="38_4yrbn"]
+[ext_resource type="Texture2D" uid="uid://xisd42fifxks" path="res://assets/UI/DayNightIcon/4 Night/8.png" id="39_lkeji"]
+[ext_resource type="Texture2D" uid="uid://c08k0h26uarwr" path="res://assets/UI/DayNightIcon/4 Night/9.png" id="40_y4nxw"]
+[ext_resource type="Texture2D" uid="uid://cj466v4xvq4tb" path="res://assets/UI/DayNightIcon/4 Night/10.png" id="41_mcsav"]
+[ext_resource type="Texture2D" uid="uid://deeft6apdo7s1" path="res://assets/UI/DayNightIcon/13.png" id="52_assn4"]
+[ext_resource type="Texture2D" uid="uid://dupy6hot8endb" path="res://assets/UI/DayNightIcon/14.png" id="53_jg78e"]
+[ext_resource type="Texture2D" uid="uid://byqsfiobpdo82" path="res://assets/UI/DayNightIcon/12.png" id="55_07oil"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ou13x"]
 bg_color = Color(0.404512, 0.404511, 0.404511, 1)
@@ -95,6 +139,149 @@ corner_radius_bottom_left = 2
 [sub_resource type="Theme" id="Theme_7s1ir"]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_t3gi5")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_lb0xk")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kf1r8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_oydn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nbik1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_yc15w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_h6lnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_avnn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_h0yy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3013n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ues6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_3x8xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_sbql5")
+}],
+"loop": true,
+"name": &"dawn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_36240")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ddoqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_g1maa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_i2w3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_16spx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_pmrjy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_k02g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_onneh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_rm3jw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ycwxu")
+}],
+"loop": true,
+"name": &"day",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_iyytb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_5wyht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_wcafd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_sp75n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_wmjpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_cr5ey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_4yrbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_lkeji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_y4nxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_mcsav")
+}],
+"loop": true,
+"name": &"night",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_7gq4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_muyrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vhynj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1bqnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gdi0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_tftdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_7iujm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_u5oyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_77ouj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_7vebo")
+}],
+"loop": true,
+"name": &"noon",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_o30k2"]
 resource_name = "end"
@@ -1358,8 +1545,9 @@ mouse_filter = 2
 [node name="Mini" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -200.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = -160.0
 script = ExtResource("5_o3o45")
 
 [node name="MP" type="Label" parent="Mini"]
@@ -1374,14 +1562,6 @@ theme_override_font_sizes/font_size = 35
 text = "50/100
 "
 
-[node name="Background1" type="ColorRect" parent="Mini"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 324.0
-offset_bottom = 114.0
-color = Color(0.180392, 0.180392, 0.180392, 1)
-
 [node name="Background2" type="ColorRect" parent="Mini"]
 layout_mode = 0
 offset_left = 8.0
@@ -1390,71 +1570,11 @@ offset_right = 289.0
 offset_bottom = 199.0
 color = Color(0.180392, 0.180392, 0.180392, 1)
 
-[node name="Name" type="Label" parent="Mini"]
-layout_mode = 0
-offset_left = 190.0
-offset_top = 17.0
-offset_right = 295.0
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("3_sl2pw")
-theme_override_font_sizes/font_size = 20
-text = "Free fireer"
-
-[node name="LVL" type="Label" parent="Mini"]
-layout_mode = 0
-offset_left = 196.0
-offset_top = 46.0
-offset_right = 256.0
-offset_bottom = 69.0
-theme_override_fonts/font = ExtResource("3_sl2pw")
-theme_override_font_sizes/font_size = 20
-text = "999999"
-
-[node name="Coin" type="Label" parent="Mini"]
-layout_mode = 0
-offset_left = 219.0
-offset_top = 73.0
-offset_right = 259.0
-offset_bottom = 96.0
-theme_override_fonts/font = ExtResource("3_sl2pw")
-theme_override_font_sizes/font_size = 20
-text = "999G"
-
 [node name="Supports" type="Control" parent="Mini"]
 anchors_preset = 0
 offset_left = 32.0
 offset_right = 72.0
 offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Mini/Supports"]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 17.0
-offset_right = 151.0
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("3_sl2pw")
-theme_override_font_sizes/font_size = 20
-text = "Name:"
-
-[node name="Label2" type="Label" parent="Mini/Supports"]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 45.0
-offset_right = 161.0
-offset_bottom = 68.0
-theme_override_fonts/font = ExtResource("3_sl2pw")
-theme_override_font_sizes/font_size = 20
-text = "Level:"
-
-[node name="Label3" type="Label" parent="Mini/Supports"]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 73.0
-offset_right = 181.0
-offset_bottom = 96.0
-theme_override_fonts/font = ExtResource("3_sl2pw")
-theme_override_font_sizes/font_size = 20
-text = "Balance:"
 
 [node name="Label4" type="Label" parent="Mini/Supports"]
 layout_mode = 0
@@ -1477,13 +1597,6 @@ theme_override_fonts/font = ExtResource("3_sl2pw")
 theme_override_font_sizes/font_size = 25
 text = "MP:
 "
-
-[node name="anim" type="AnimatedSprite2D" parent="Mini"]
-position = Vector2(68, 58)
-scale = Vector2(2.5, 2.5)
-sprite_frames = ExtResource("2_te8lq")
-animation = &"idle"
-autoplay = "idle"
 
 [node name="Mana_Bar" type="ProgressBar" parent="Mini"]
 layout_mode = 0
@@ -1514,6 +1627,164 @@ theme_override_fonts/font = ExtResource("3_sl2pw")
 theme_override_font_sizes/font_size = 35
 text = "50/100
 "
+
+[node name="Old" type="Control" parent="Mini"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background1" type="ColorRect" parent="Mini/Old"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 324.0
+offset_bottom = 114.0
+color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="Name" type="Label" parent="Mini/Old"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 17.0
+offset_right = 295.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_sl2pw")
+theme_override_font_sizes/font_size = 20
+text = "Free fireer"
+
+[node name="LVL" type="Label" parent="Mini/Old"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 46.0
+offset_right = 256.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("3_sl2pw")
+theme_override_font_sizes/font_size = 20
+text = "999999"
+
+[node name="Coin" type="Label" parent="Mini/Old"]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 73.0
+offset_right = 259.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("3_sl2pw")
+theme_override_font_sizes/font_size = 20
+text = "999G"
+
+[node name="Label" type="Label" parent="Mini/Old"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 17.0
+offset_right = 151.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_sl2pw")
+theme_override_font_sizes/font_size = 20
+text = "Name:"
+
+[node name="Label2" type="Label" parent="Mini/Old"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 45.0
+offset_right = 161.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("3_sl2pw")
+theme_override_font_sizes/font_size = 20
+text = "Level:"
+
+[node name="Label3" type="Label" parent="Mini/Old"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 73.0
+offset_right = 181.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("3_sl2pw")
+theme_override_font_sizes/font_size = 20
+text = "Balance:"
+
+[node name="anim" type="AnimatedSprite2D" parent="Mini/Old"]
+position = Vector2(68, 58)
+scale = Vector2(2.5, 2.5)
+sprite_frames = ExtResource("2_te8lq")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Clock" type="Control" parent="Mini"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_rgnyy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mini/Clock"]
+z_index = 1
+position = Vector2(40, 40)
+sprite_frames = SubResource("SpriteFrames_kf1r8")
+animation = &"dawn"
+frame_progress = 0.869194
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mini/Clock"]
+position = Vector2(115, 43)
+scale = Vector2(3.46875, 2.9375)
+texture = ExtResource("52_assn4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mini/Clock"]
+position = Vector2(226, 43)
+scale = Vector2(3.5, 2.9375)
+texture = ExtResource("53_jg78e")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Mini/Clock"]
+position = Vector2(244, 100)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("53_jg78e")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Mini/Clock"]
+position = Vector2(82, 100)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("55_07oil")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Mini/Clock"]
+position = Vector2(163, 100)
+scale = Vector2(3.3125, 1.75)
+texture = ExtResource("52_assn4")
+
+[node name="Label" type="Label" parent="Mini/Clock"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 258.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("3_sl2pw")
+theme_override_font_sizes/font_size = 50
+text = "6:30
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Mini/Clock"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 85.0
+offset_right = 236.0
+offset_bottom = 116.0
+theme_override_fonts/font = ExtResource("3_sl2pw")
+theme_override_font_sizes/font_size = 30
+text = "1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Mini/Clock"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 66.0
+offset_right = 220.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("3_sl2pw")
+theme_override_font_sizes/font_size = 30
+text = "day:
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SemiInput" type="Control" parent="."]
 visible = false

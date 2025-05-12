@@ -28,6 +28,7 @@ EffectManager="*res://Items/EffectManager.gd"
 
 directories/dch_directory={}
 directories/dtl_directory={
+"sleeping": "res://Dialogs/system/sleeping.dtl",
 "testCharacter1": "res://Dialogs/TestCharacters/testCharacter1.dtl"
 }
 glossary/default_case_sensitive=true

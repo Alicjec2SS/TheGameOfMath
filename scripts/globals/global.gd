@@ -56,6 +56,7 @@ func _process(delta):
 	for item in global.playerData.waiting_items_effect:
 		var c_item = EffectManager.get_item(item)
 		c_item.recently_effect()
+	playerData.time += delta/60
 		
 		
 

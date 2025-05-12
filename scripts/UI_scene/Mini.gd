@@ -3,7 +3,7 @@ extends Control
 
 @onready var mana = $Mana_Bar
 @onready var HP = $HP_Bar
-@onready var anim = $anim
+@onready var anim = $Old/anim
 var current_anim = "idle"  # Lưu trạng thái animation hiện tại
 
 func format_short_number(num: float) -> String:
@@ -40,9 +40,9 @@ func _process(delta):
 		set_animation("walking")
 	else:
 		set_animation("idle")
-	$Name.text = global.playerData.name
-	$LVL.text = str(global.playerData.LVL)
-	$Coin.text = str(format_short_number(global.playerData.money)) + "G"
+	$Old/Name.text = global.playerData.name
+	$Old/LVL.text = str(global.playerData.LVL)
+	$Old/Coin.text = str(format_short_number(global.playerData.money)) + "G"
 	$HP.text = str(global.playerData.HP)+"/"+str(global.playerData.MAX_HP)
 	$MP.text = str(global.playerData.mana)+"/"+str(global.playerData.MAX_MANA)
 

@@ -8,6 +8,10 @@ class_name PlayerData
 #mảng lưu trữ những npc mà người chơi đã đánh bại
 @export var defeated_ID_player = []
 
+#time engine
+@export var time = 0.0
+@export var day = 0
+
 #số lượng tim của người chơi hiện có:
 @export var HP = 3 #mới đầu sẽ là 0
 @export var DMG = 1

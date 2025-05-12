@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbjn6cpwyglsh"]
+
+[ext_resource type="Script" path="res://scripts/things/NPC/Bed.gd" id="1_4g0vm"]
+
+[node name="Bed" type="CharacterBody2D"]
+script = ExtResource("1_4g0vm")
