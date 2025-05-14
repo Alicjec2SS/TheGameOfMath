@@ -7,33 +7,11 @@ var merged_inventory: Dictionary
 var itemID 
 
 func _ready():
+	if not self.visible:
+		for child in slots.get_children():
+			child.queue_free()
 	if self.visible and slots.get_child_count() == 0:
-		var raw_items: Array = []
-		for item_id in global.playerData.inventory:
-			var item = EffectManager.get_item(item_id)
-			if item != null:
-				raw_items.append(item)
-
-		merged_inventory = merge_inventory(raw_items)
-		
-		
-		for data in merged_inventory.values():
-			
-			var Sitem = data["item"]
-			var Squantity = data["count"]
-
-			var new_slot = ItemSlot.instantiate()
-			new_slot.itemID = Sitem.ID
-
-			# Scale icon nếu có
-			var icon_node = new_slot.get_node("Icon")
-			if icon_node.texture:
-				var tex_size = icon_node.texture.get_size()
-				var scale_factor = min(32.0 / tex_size.x, 32.0 / tex_size.y)
-				icon_node.scale = Vector2(scale_factor, scale_factor)
-				icon_node.position = Vector2(16, 16)
-
-			slots.add_child(new_slot)
+		_update_inventory()
 
 func merge_inventory(inventory_array: Array) -> Dictionary:
 	var inventory_dict := {}

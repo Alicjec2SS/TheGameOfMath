@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://24dhlgvx68rc"]
+[gd_scene load_steps=38 format=3 uid="uid://24dhlgvx68rc"]
 
 [ext_resource type="Script" path="res://scripts/Worlds_Setups/level1.gd" id="1_r75s2"]
 [ext_resource type="PackedScene" uid="uid://cfxf1cnegipmh" path="res://scenes/globals/player.tscn" id="2_2bdas"]
@@ -193,6 +193,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5fla"]
+size = Vector2(28, 27)
+
 [node name="level1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_r75s2")
@@ -221,6 +224,7 @@ layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(458767, 458755, 6, -65527, 327680, 2, -65526, 327680, 2, -65525, 327680, 2, -65524, 327680, 2, -65523, 327680, 2, -65522, 327680, 2, -65528, 0, 1, -65521, 65536, 1, -65520, 131072, 1, -65519, 196608, 1, 17, 196608, 2, 65553, 196608, 2, 131089, 196608, 4, 131082, 65536, 4, 131083, 131072, 4, 131084, 327680, 4, 131085, 327680, 4, 131086, 327680, 4, 131087, 327680, 4, 131088, 327680, 4, 131081, 327680, 4, 131080, 262144, 4, 8, 262144, 3, 65544, 262144, 3)
 
 [node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Area2D" parent="Entities" instance=ExtResource("4_y27v5")]
 position = Vector2(44, 75)
@@ -284,6 +288,7 @@ shape = SubResource("RectangleShape2D_0o4cm")
 
 [node name="LogicGate" parent="Entities" node_paths=PackedStringArray("anim") instance=ExtResource("9_cx4l0")]
 z_index = 2
+y_sort_enabled = true
 position = Vector2(457, -35)
 anim = NodePath("AnimatedSprite2D")
 path_to_next_map = "res://scenes/levels/level2.tscn"
@@ -301,7 +306,22 @@ scale = Vector2(3.08333, 1.65625)
 texture = ExtResource("10_mwxfy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities/LogicGate"]
+y_sort_enabled = true
 position = Vector2(-120, 90)
 scale = Vector2(0.628, 0.724)
 sprite_frames = SubResource("SpriteFrames_rrkph")
 animation = &"open"
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+z_index = 999
+polygon = PackedVector2Array(314, 85, 314, 83, 313, 83, 312, 64, 315, 63, 315, 56, 317, 56, 317, 50, 319, 50, 320, 47, 321, 47, 322, 44, 325, 44, 325, 41, 327, 41, 327, 38, 332, 38, 332, 35, 344, 35, 344, 38, 349, 38, 349, 41, 351, 41, 352, 41, 352, 44, 353, 44, 354, 44, 354, 46, 357, 47, 357, 49, 359, 50, 359, 55, 361, 56, 361, 64, 363, 64, 363, 83, 361, 83, 361, 85)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D2"]
+position = Vector2(207, 3.5)
+shape = SubResource("RectangleShape2D_b5fla")

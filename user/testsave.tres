@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://0utlaw17cbwy"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://scripts/globals/player/playerData.gd" id="1_hmmkv"]
 
 [resource]
 script = ExtResource("1_hmmkv")
-position = Vector2(0, 0)
-current_map_path = "res://scenes/levels/level2.tscn"
+position = Vector2(293.342, 56.312)
+current_map_path = "res://scenes/levels/level1.tscn"
 money = 22438904219763
 defeated_ID_player = [172, 911]
-time = 45.9924
-day = 8
+time = 54.5881
+day = 9
 HP = 83
 DMG = 26
 EXP = 624100
@@ -25,4 +25,4 @@ waiting_items_effect = Array[int]([])
 add_speed = 0
 speed = 75
 using_equips = [201, 202]
-inventory = Array[int]([5, 201, 202, -16, 7, 67567567, 8998, 55, 0, 0, 1])
+inventory = Array[int]([5, 201, 202, -16, 7, 67567567, 8998, 55, 0, 1])

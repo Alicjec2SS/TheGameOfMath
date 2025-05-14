@@ -35,15 +35,17 @@ layer_3/y_sort_enabled = true
 layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(-131063, 196609, 0, 196623, 196609, 0, 262159, 196609, 0, 589831, 196609, 0, 589830, 196609, 0, 655366, 196609, 0, 655365, 196609, 0, 655361, 196609, 0, 65544, 196609, 0, -131057, 196609, 0, 458770, 196609, 0, 589838, 196609, 0, 655374, 196609, 0, 393238, 262145, 2, 19, 262145, 2, 327687, 262145, 2, 393223, 262145, 2, 720916, 262145, 2, -262141, 262145, 2, 196622, 458755, 6, 131086, 458755, 5)
 
-[node name="Area2D" parent="." instance=ExtResource("4_jysi1")]
+[node name="DayNightEngine" parent="." instance=ExtResource("5_hewsv")]
+position = Vector2(35, 53)
+scale = Vector2(10000, 10000)
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Area2D" parent="Entities" instance=ExtResource("4_jysi1")]
 position = Vector2(227, 60)
 path_to_next_map = "res://scenes/levels/level1.tscn"
 next_map_pos = Vector2(251, 137)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Area2D"]
 position = Vector2(6, 0)
 shape = SubResource("RectangleShape2D_cd5tk")
-
-[node name="DayNightEngine" parent="." instance=ExtResource("5_hewsv")]
-position = Vector2(35, 53)
-scale = Vector2(10000, 10000)
