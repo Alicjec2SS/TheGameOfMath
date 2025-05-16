@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://phnt81wukl7w"]
+
+[ext_resource type="Texture2D" uid="uid://c4ocom6ke5p2m" path="res://Items/assets/test/1.png" id="1_bevje"]
+[ext_resource type="Script" path="res://scripts/UI_scene/Big/sell_dialog_item_slot.gd" id="1_xyk7l"]
+[ext_resource type="FontFile" uid="uid://csfxe4gpjf0nh" path="res://fonts/superstar_memesbruh03.ttf" id="2_fuyd5"]
+[ext_resource type="StyleBox" uid="uid://bwa005carm78b" path="res://settings/ItemSlot.tres" id="3_kklyt"]
+[ext_resource type="StyleBox" uid="uid://bkn62cudvxjfp" path="res://settings/ItemSlotfocus.tres" id="4_w2ht2"]
+
+[sub_resource type="Theme" id="Theme_vp1mb"]
+Button/styles/focus = ExtResource("3_kklyt")
+Button/styles/hover = ExtResource("3_kklyt")
+Button/styles/normal = ExtResource("3_kklyt")
+Button/styles/pressed = ExtResource("4_w2ht2")
+
+[node name="SellDialog_ItemSlot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xyk7l")
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(88, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("1_bevje")
+
+[node name="Name" type="Label" parent="."]
+z_index = 4096
+layout_mode = 0
+offset_left = 136.0
+offset_top = 24.0
+offset_right = 560.0
+offset_bottom = 84.0
+theme_override_fonts/font = ExtResource("2_fuyd5")
+theme_override_font_sizes/font_size = 53
+text = "Blade of justice"
+
+[node name="Quantity" type="Label" parent="."]
+z_index = 4096
+layout_mode = 0
+offset_left = 560.0
+offset_top = 16.0
+offset_right = 630.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("2_fuyd5")
+theme_override_font_sizes/font_size = 70
+text = "x3
+"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 669.0
+offset_bottom = 100.0
+theme = SubResource("Theme_vp1mb")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
