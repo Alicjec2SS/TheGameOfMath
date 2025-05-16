@@ -5,6 +5,57 @@
 [ext_resource type="Theme" uid="uid://bu30yd48r1mvj" path="res://settings/unequip.tres" id="3_2b0u6"]
 [ext_resource type="FontFile" uid="uid://csfxe4gpjf0nh" path="res://fonts/superstar_memesbruh03.ttf" id="4_eviww"]
 
+[sub_resource type="Animation" id="Animation_ug2x8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/ItemsList:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(424, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_ipnn2"]
 resource_name = "start"
 tracks/0/type = "value"
@@ -128,57 +179,6 @@ tracks/9/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_ug2x8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Background/ItemsList:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(424, 24)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RichTextLabel:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fsdhe"]
 _data = {
 "RESET": SubResource("Animation_ug2x8"),
@@ -272,12 +272,22 @@ color = Color(0.396078, 0.262745, 0.129412, 1)
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 48.0
-offset_top = 24.0
-offset_right = 360.0
-offset_bottom = 152.0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 352.0
+offset_bottom = 144.0
 mouse_filter = 2
 color = Color(0.845073, 0.675418, 0.453047, 1)
+
+[node name="BG" type="ColorRect" parent="Background/Money"]
+z_index = -1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 304.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.396078, 0.262745, 0.129412, 1)
 
 [node name="Quantity" type="ColorRect" parent="Background"]
 visible = false
@@ -351,5 +361,61 @@ libraries = {
 "": SubResource("AnimationLibrary_fsdhe")
 }
 
+[node name="QuantityBox" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Up" type="Button" parent="QuantityBox"]
+z_index = 4096
+offset_left = 803.0
+offset_top = 313.0
+offset_right = 837.0
+offset_bottom = 381.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 60
+text = "^"
+flat = true
+
+[node name="Down" type="Button" parent="QuantityBox"]
+z_index = 4096
+offset_left = 834.0
+offset_top = 455.0
+offset_right = 868.0
+offset_bottom = 523.0
+rotation = 3.14159
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 60
+text = "^"
+flat = true
+
+[node name="Quantity" type="Label" parent="QuantityBox"]
+z_index = 4096
+offset_left = 791.0
+offset_top = 360.0
+offset_right = 853.0
+offset_bottom = 411.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 50
+text = "x3
+"
+horizontal_alignment = 1
+
+[node name="Cost" type="Label" parent="QuantityBox"]
+z_index = 4096
+offset_left = 880.0
+offset_top = 360.0
+offset_right = 1093.0
+offset_bottom = 431.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 50
+text = "900G"
+horizontal_alignment = 2
+
 [connection signal="pressed" from="Accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="QuantityBox/Up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="QuantityBox/Down" to="." method="_on_down_pressed"]
