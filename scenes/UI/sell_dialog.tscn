@@ -178,6 +178,54 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Background/Money:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Background/Money:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(56, -268), Vector2(56, 32)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Money:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Money:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(56, -236), Vector2(56, 64)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fsdhe"]
 _data = {
@@ -269,7 +317,6 @@ mouse_filter = 2
 color = Color(0.396078, 0.262745, 0.129412, 1)
 
 [node name="Money" type="ColorRect" parent="Background"]
-visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 56.0
@@ -314,12 +361,22 @@ color = Color(0.396078, 0.262745, 0.129412, 1)
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 56.0
-offset_top = 304.0
-offset_right = 352.0
-offset_bottom = 440.0
+offset_left = 64.0
+offset_top = 288.0
+offset_right = 344.0
+offset_bottom = 408.0
 mouse_filter = 2
 color = Color(0.845073, 0.675418, 0.453047, 1)
+
+[node name="InBag2" type="ColorRect" parent="Background/InBag"]
+z_index = -1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 288.0
+offset_bottom = 128.0
+mouse_filter = 2
+color = Color(0.396078, 0.262745, 0.129412, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 z_index = 9
@@ -361,6 +418,30 @@ libraries = {
 "": SubResource("AnimationLibrary_fsdhe")
 }
 
+[node name="Money" type="Label" parent="."]
+visible = false
+z_index = 4096
+offset_left = 56.0
+offset_top = 64.0
+offset_right = 352.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 40
+text = "Money:2166,3B G"
+horizontal_alignment = 1
+
+[node name="Inbag" type="Label" parent="."]
+visible = false
+z_index = 4096
+offset_left = 56.0
+offset_top = 328.0
+offset_right = 352.0
+offset_bottom = 379.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 40
+text = "In Bag: 0"
+horizontal_alignment = 1
+
 [node name="QuantityBox" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -371,6 +452,7 @@ mouse_filter = 2
 
 [node name="Up" type="Button" parent="QuantityBox"]
 z_index = 4096
+layout_mode = 0
 offset_left = 803.0
 offset_top = 313.0
 offset_right = 837.0
@@ -382,6 +464,7 @@ flat = true
 
 [node name="Down" type="Button" parent="QuantityBox"]
 z_index = 4096
+layout_mode = 0
 offset_left = 834.0
 offset_top = 455.0
 offset_right = 868.0
@@ -394,6 +477,7 @@ flat = true
 
 [node name="Quantity" type="Label" parent="QuantityBox"]
 z_index = 4096
+layout_mode = 0
 offset_left = 791.0
 offset_top = 360.0
 offset_right = 853.0
@@ -406,6 +490,7 @@ horizontal_alignment = 1
 
 [node name="Cost" type="Label" parent="QuantityBox"]
 z_index = 4096
+layout_mode = 0
 offset_left = 880.0
 offset_top = 360.0
 offset_right = 1093.0

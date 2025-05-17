@@ -75,6 +75,7 @@ func _process(delta):
 		anim.play("start")
 		await get_tree().create_timer(1).timeout
 		$RichTextLabel.text = greeting
+	$Money.text = "Money: " + str(global.playerData.money) + " G"
 
 func _get_data(itemID,amount,price):
 	var conv_item = EffectManager.get_item(itemID)
@@ -96,7 +97,10 @@ func _get_data(itemID,amount,price):
 		$Background/Quantity.show()
 		cur_will_buy_quantity = 1#reset
 	$RichTextLabel.text = text
-
+	$Background/InBag.show()
+	$Inbag.show()
+	$Inbag.text = "In Bag: " + str(global.playerData.inventory.count(itemID))
+	
 func _on_cancel_pressed():
 	$RichTextLabel.text = greeting
 	$Accept.hide()
@@ -113,6 +117,7 @@ func _on_accept_pressed():
 	$QuantityBox.hide()
 	$Background/Quantity.hide()
 	$RichTextLabel.text = "It costs all " + str(cost) +"G . Anything else?"
+	_update_inventory()
 
 func _on_down_pressed():
 	cur_will_buy_quantity = max(1,cur_will_buy_quantity-1)
