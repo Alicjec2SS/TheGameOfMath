@@ -1,6 +1,8 @@
 extends CanvasLayer
 
-@export var greeting:String
+@export var buy_greeting:String
+@export var sell_greeting:String
+@export_range(0.0,1.0) var resale_value_percentage: float # 0.0 to 1.0
 @export var items:Array[Array]
 
 #items look like this:
@@ -9,21 +11,27 @@ extends CanvasLayer
 
 var cur_item_info:Array = [null,null,null]
 var cur_will_buy_quantity = 1
-
+var merged_inv
 #	cur_item_info[0] = itemID
 #cur_item_info[2] = price
 #cur_item_info[1] = amount
 
 
 
-@onready var slots = $ScrollContainer/VBoxContainer
+@onready var buy_slots = $Buy/ScrollContainer/VBoxContainer
+@onready var sell_slots = $Sell/ScrollContainer/VBoxContainer
 @onready var ItemSlot = preload("res://scenes/UI/sell_dialog_item_slot.tscn")
 @onready var UI = $"../UI"
-@onready var anim = $anim
+@onready var anim = $Buy/anim
 
 #save-load
 @export var sellerID:int
 
+
+##
+##
+##
+## Buy dialog
 func format_short_number(num: float) -> String:
 	var abs_num = abs(num)
 	var suffix := ""
@@ -57,25 +65,22 @@ func _update_inventory():
 			icon_node.scale = Vector2(scale_factor, scale_factor)
 			icon_node.position = Vector2(16, 16)
 
-		slots.add_child(new_slot)
+		buy_slots.add_child(new_slot)
 	#slots.add_child(ItemSlot.instantiate())
 
 	await get_tree().process_frame
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	_update_inventory()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+	
+func start_buy():
 	var mini_UI = UI.get_node("Mini")
 	var mini_UI_anim = UI.get_node("anim")
-	if self.visible and mini_UI.visible:
+	if self.get_node("Buy").visible and mini_UI.visible:
 		mini_UI_anim.play("end")
 		anim.play("start")
 		await get_tree().create_timer(1).timeout
-		$RichTextLabel.text = greeting
-	$Money.text = "Money: " + str(global.playerData.money) + " G"
+		$Buy/RichTextLabel.text = buy_greeting
+	$Buy/Money.text = "Money: " + str(global.playerData.money) + " G"
 
 func _get_data(itemID,amount,price):
 	var conv_item = EffectManager.get_item(itemID)
@@ -89,20 +94,20 @@ func _get_data(itemID,amount,price):
 		text = "Huh? " + conv_item.name + "?"
 		text += "we only have " + str(amount) + " of them." if amount > 0 else ""
 		text += " How many do you want to buy?"
-		$QuantityBox/Quantity.text = "X" + str(cur_will_buy_quantity) 
-		$QuantityBox/Cost.text = format_short_number(cur_will_buy_quantity * cur_item_info[2]) + " G"
-		$Accept.show()
-		$Cancel.show()
-		$QuantityBox.show()
-		$Background/Quantity.show()
+		$Buy/QuantityBox/Quantity.text = "X" + str(cur_will_buy_quantity) 
+		$Buy/QuantityBox/Cost.text = format_short_number(cur_will_buy_quantity * cur_item_info[2]) + " G"
+		$Buy/Accept.show()
+		$Buy/Cancel.show()
+		$Buy/QuantityBox.show()
+		$Buy/Background/Quantity.show()
 		cur_will_buy_quantity = 1#reset
-	$RichTextLabel.text = text
-	$Background/InBag.show()
-	$Inbag.show()
-	$Inbag.text = "In Bag: " + str(global.playerData.inventory.count(itemID))
+	$Buy/RichTextLabel.text = text
+	$Buy/Background/InBag.show()
+	$Buy/Inbag.show()
+	$Buy/Inbag.text = "In Bag: " + str(global.playerData.inventory.count(itemID))
 	
 func _on_cancel_pressed():
-	$RichTextLabel.text = greeting
+	$RichTextLabel.text = buy_greeting
 	$Accept.hide()
 	$Cancel.hide()
 	$QuantityBox.hide()
@@ -134,3 +139,107 @@ func _on_up_pressed():
 								cur_will_buy_quantity + 1)
 	$QuantityBox/Quantity.text = "X" + str(cur_will_buy_quantity)
 	$QuantityBox/Cost.text = format_short_number(cur_will_buy_quantity * cur_item_info[2]) + " G"
+
+##
+##
+##end buy dialog
+
+##Manager
+func _on_buy_pressed():
+	$Case.hide()
+	$Buy.show()
+	start_buy()
+
+func _on_sell_pressed():
+	$Case.hide()
+	$Sell.show()
+	start_sell()
+
+func _ready():
+	_update_inventory()
+	_get_player_inventory()
+
+func _process(delta):
+	start_buy()
+	start_sell()
+##end Manager
+
+##sell dialog
+
+func merge_inventory(inventory_array: Array) -> Dictionary:
+	'''Nhận vào một array chứa các vật phẩm đã được chuyển đổi thành resource file và thu gọn nó 
+		Theo dạng {<ID của vật phẩm đó> : {"item":<Item đã đc chuyển đổi>, "count" : <số lượng>}}'''
+	var inventory_dict := {}
+	var unstackable_index := 0
+
+	for i in range(inventory_array.size()):
+		var item = inventory_array[i]
+
+		
+		if not (item is InvItem):
+
+			continue
+
+		if item.stackable:
+			if inventory_dict.has(item.ID):
+				inventory_dict[item.ID]["count"] += 1
+			else:
+				inventory_dict[item.ID] = {
+					"item": item,
+					"count": 1
+				}
+		else:
+			var unique_key = str(item.ID) + "_" + str(unstackable_index)
+			inventory_dict[unique_key] = {
+				"item": item,
+				"count": 1
+			}
+			unstackable_index += 1
+
+	
+	return inventory_dict
+
+
+func _get_player_inventory():
+	var temp = []
+	for i in global.playerData.inventory:
+		temp.append(EffectManager.get_item(i))
+		
+	merged_inv = merge_inventory(temp)
+	for data in merged_inv.values():
+		var new_slot = ItemSlot.instantiate()
+		new_slot.itemID = data["item"].ID
+		new_slot.quantity = data["count"]
+		new_slot.price = resale_value_percentage * data["item"].sell
+
+		var icon_node = new_slot.get_node("Icon")
+		if icon_node.texture:
+			var tex_size = icon_node.texture.get_size()
+			var scale_factor = min(32.0 / tex_size.x, 32.0 / tex_size.y)
+			icon_node.scale = Vector2(scale_factor, scale_factor)
+			icon_node.position = Vector2(16, 16)
+
+		sell_slots.add_child(new_slot)
+	#slots.add_child(ItemSlot.instantiate())
+
+	await get_tree().process_frame
+
+func _get_data_selling(itemID,amount,price):
+	var conv = EffectManager.get_item(itemID)
+	$Sell/RichTextLabel.text = "Huh?" + conv.name + "?, Kinda great. How many do you want to sell?"
+	$Sell/Background/Quantity.show()
+	$Sell/QuantityBox.show()
+
+func start_sell():
+	var mini_UI = UI.get_node("Mini")
+	var mini_UI_anim = UI.get_node("anim")
+	if self.get_node("Sell").visible and mini_UI.visible:
+		mini_UI_anim.play("end")
+		#anim.play("start")
+		await get_tree().create_timer(1).timeout
+		$Sell/RichTextLabel.text = sell_greeting
+	$Sell/Money.text = "Money: " + str(global.playerData.money) + " G"
+	
+
+
+

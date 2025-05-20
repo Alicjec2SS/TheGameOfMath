@@ -37,5 +37,6 @@ func _process(delta):
 
 func _on_button_pressed():
 	print(str(itemID) + "pressed")
-	$"../../.."._get_data(itemID,quantity,price)
+	$"../../../.."._get_data(itemID,quantity,price)
+	$"../../../.."._get_data_selling(itemID,quantity,price)
 		

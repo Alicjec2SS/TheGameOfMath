@@ -28,7 +28,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_bevje")
 
 [node name="Name" type="Label" parent="."]
-z_index = 4096
+z_index = 9
 layout_mode = 0
 offset_left = 136.0
 offset_top = 24.0
@@ -39,7 +39,7 @@ theme_override_font_sizes/font_size = 53
 text = "Blade of justice"
 
 [node name="Quantity" type="Label" parent="."]
-z_index = 4096
+z_index = 9
 layout_mode = 0
 offset_left = 560.0
 offset_top = 16.0

@@ -235,12 +235,132 @@ _data = {
 
 [node name="SellDialog" type="CanvasLayer"]
 script = ExtResource("1_v1cas")
-greeting = "Hello, Welcome to the admin shop, where you can buy something OP. WHat do you want to buy?"
+buy_greeting = "Hello, Welcome to the admin shop, where you can buy something OP. WHat do you want to buy?"
+sell_greeting = "Hello, Welcome to the admin shop, where you can buy something OP. WHat do you want to sell?"
+resale_value_percentage = 0.646
 items = Array[Array]([[1, -1, 30]])
 
-[node name="Accept" type="Button" parent="."]
+[node name="Case" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BGBG" type="ColorRect" parent="Case"]
+z_index = 1
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 352.0
+offset_bottom = 208.0
+mouse_filter = 2
+color = Color(0.845073, 0.675418, 0.453047, 1)
+
+[node name="BG" type="ColorRect" parent="Case/BGBG"]
+z_index = -1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 304.0
+offset_bottom = 184.0
+mouse_filter = 2
+color = Color(0.396078, 0.262745, 0.129412, 1)
+
+[node name="Sell" type="Button" parent="Case"]
+z_index = 1
+layout_mode = 0
+offset_left = 72.0
+offset_top = 40.0
+offset_right = 200.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 65
+text = "SELL
+"
+flat = true
+
+[node name="Buy" type="Button" parent="Case"]
+z_index = 1
+layout_mode = 0
+offset_left = 56.0
+offset_top = 128.0
+offset_right = 184.0
+offset_bottom = 202.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 65
+text = "BUY
+"
+flat = true
+
+[node name="Buy" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="QuantityBox" type="Control" parent="Buy"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Up" type="Button" parent="Buy/QuantityBox"]
+z_index = 4096
+layout_mode = 0
+offset_left = 803.0
+offset_top = 313.0
+offset_right = 837.0
+offset_bottom = 381.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 60
+text = "^"
+flat = true
+
+[node name="Down" type="Button" parent="Buy/QuantityBox"]
+z_index = 4096
+layout_mode = 0
+offset_left = 834.0
+offset_top = 455.0
+offset_right = 868.0
+offset_bottom = 523.0
+rotation = 3.14159
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 60
+text = "^"
+flat = true
+
+[node name="Quantity" type="Label" parent="Buy/QuantityBox"]
+z_index = 4096
+layout_mode = 0
+offset_left = 791.0
+offset_top = 360.0
+offset_right = 853.0
+offset_bottom = 411.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 50
+text = "x3
+"
+horizontal_alignment = 1
+
+[node name="Cost" type="Label" parent="Buy/QuantityBox"]
+z_index = 4096
+layout_mode = 0
+offset_left = 880.0
+offset_top = 360.0
+offset_right = 1093.0
+offset_bottom = 431.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 50
+text = "900G"
+horizontal_alignment = 2
+
+[node name="Accept" type="Button" parent="Buy"]
 visible = false
 z_index = 4096
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -257,9 +377,10 @@ theme_override_font_sizes/font_size = 30
 text = "YES
 "
 
-[node name="Cancel" type="Button" parent="."]
+[node name="Cancel" type="Button" parent="Buy"]
 visible = false
 z_index = 4096
+layout_mode = 0
 offset_left = 720.0
 offset_top = 568.0
 offset_right = 878.0
@@ -269,14 +390,82 @@ theme_override_font_sizes/font_size = 30
 text = "No
 "
 
-[node name="Background" type="Control" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="Buy"]
+z_index = 9
+layout_mode = 0
+offset_left = 440.0
+offset_top = -360.0
+offset_right = 1112.0
+offset_bottom = -32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buy/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 120
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Buy"]
+z_index = 9
+layout_mode = 0
+offset_left = 64.0
+offset_top = 748.0
+offset_right = 1088.0
+offset_bottom = 860.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_eviww")
+theme_override_font_sizes/normal_font_size = 50
+fit_content = true
+
+[node name="ColorRect" type="ColorRect" parent="Buy"]
+z_index = -1
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="anim" type="AnimationPlayer" parent="Buy"]
+libraries = {
+"": SubResource("AnimationLibrary_fsdhe")
+}
+
+[node name="Money" type="Label" parent="Buy"]
+z_index = 4096
+layout_mode = 0
+offset_left = 56.0
+offset_top = -236.0
+offset_right = 352.0
+offset_bottom = -185.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 40
+text = "Money:2166,3B G"
+horizontal_alignment = 1
+
+[node name="Inbag" type="Label" parent="Buy"]
+visible = false
+z_index = 4096
+layout_mode = 0
+offset_left = 56.0
+offset_top = 328.0
+offset_right = 352.0
+offset_bottom = 379.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 40
+text = "In Bag: 0"
+horizontal_alignment = 1
+
+[node name="Background" type="Control" parent="Buy"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="ItemsList" type="ColorRect" parent="Background"]
+[node name="ItemsList" type="ColorRect" parent="Buy/Background"]
 z_index = 1
 layout_mode = 0
 offset_left = 424.0
@@ -286,7 +475,7 @@ offset_bottom = 384.0
 mouse_filter = 2
 color = Color(0.396078, 0.262745, 0.129412, 1)
 
-[node name="BG" type="ColorRect" parent="Background/ItemsList"]
+[node name="BG" type="ColorRect" parent="Buy/Background/ItemsList"]
 z_index = 1
 layout_mode = 0
 offset_left = 8.0
@@ -296,17 +485,17 @@ offset_bottom = 352.0
 mouse_filter = 2
 color = Color(0.845073, 0.675418, 0.453047, 1)
 
-[node name="ChatBox" type="ColorRect" parent="Background"]
+[node name="ChatBox" type="ColorRect" parent="Buy/Background"]
 z_index = 1
 layout_mode = 0
 offset_left = 24.0
-offset_top = 440.0
+offset_top = 740.0
 offset_right = 1120.0
-offset_bottom = 624.0
+offset_bottom = 924.0
 mouse_filter = 2
 color = Color(0.845073, 0.675418, 0.453047, 1)
 
-[node name="BG" type="ColorRect" parent="Background/ChatBox"]
+[node name="BG" type="ColorRect" parent="Buy/Background/ChatBox"]
 z_index = -1
 layout_mode = 0
 offset_left = -8.0
@@ -316,17 +505,17 @@ offset_bottom = 192.0
 mouse_filter = 2
 color = Color(0.396078, 0.262745, 0.129412, 1)
 
-[node name="Money" type="ColorRect" parent="Background"]
+[node name="Money" type="ColorRect" parent="Buy/Background"]
 z_index = 1
 layout_mode = 0
 offset_left = 56.0
-offset_top = 32.0
+offset_top = -268.0
 offset_right = 352.0
-offset_bottom = 144.0
+offset_bottom = -156.0
 mouse_filter = 2
 color = Color(0.845073, 0.675418, 0.453047, 1)
 
-[node name="BG" type="ColorRect" parent="Background/Money"]
+[node name="BG" type="ColorRect" parent="Buy/Background/Money"]
 z_index = -1
 layout_mode = 0
 offset_left = -8.0
@@ -336,7 +525,7 @@ offset_bottom = 120.0
 mouse_filter = 2
 color = Color(0.396078, 0.262745, 0.129412, 1)
 
-[node name="Quantity" type="ColorRect" parent="Background"]
+[node name="Quantity" type="ColorRect" parent="Buy/Background"]
 visible = false
 z_index = 6
 layout_mode = 0
@@ -347,7 +536,7 @@ offset_bottom = 448.0
 mouse_filter = 2
 color = Color(0.845073, 0.675418, 0.453047, 1)
 
-[node name="BG" type="ColorRect" parent="Background/Quantity"]
+[node name="BG" type="ColorRect" parent="Buy/Background/Quantity"]
 z_index = -1
 layout_mode = 0
 offset_left = -8.0
@@ -357,7 +546,7 @@ offset_bottom = 136.0
 mouse_filter = 2
 color = Color(0.396078, 0.262745, 0.129412, 1)
 
-[node name="InBag" type="ColorRect" parent="Background"]
+[node name="InBag" type="ColorRect" parent="Buy/Background"]
 visible = false
 z_index = 1
 layout_mode = 0
@@ -368,7 +557,7 @@ offset_bottom = 408.0
 mouse_filter = 2
 color = Color(0.845073, 0.675418, 0.453047, 1)
 
-[node name="InBag2" type="ColorRect" parent="Background/InBag"]
+[node name="InBag2" type="ColorRect" parent="Buy/Background/InBag"]
 z_index = -1
 layout_mode = 0
 offset_left = -8.0
@@ -378,7 +567,159 @@ offset_bottom = 128.0
 mouse_filter = 2
 color = Color(0.396078, 0.262745, 0.129412, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="Sell" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="Control" parent="Sell"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="ItemsList" type="ColorRect" parent="Sell/Background"]
+z_index = 1
+layout_mode = 0
+offset_left = 424.0
+offset_top = 24.0
+offset_right = 1128.0
+offset_bottom = 384.0
+mouse_filter = 2
+color = Color(0.396078, 0.262745, 0.129412, 1)
+
+[node name="BG" type="ColorRect" parent="Sell/Background/ItemsList"]
+z_index = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 696.0
+offset_bottom = 352.0
+mouse_filter = 2
+color = Color(0.845073, 0.675418, 0.453047, 1)
+
+[node name="ChatBox" type="ColorRect" parent="Sell/Background"]
+z_index = 1
+layout_mode = 0
+offset_left = 32.0
+offset_top = 432.0
+offset_right = 1128.0
+offset_bottom = 616.0
+mouse_filter = 2
+color = Color(0.845073, 0.675418, 0.453047, 1)
+
+[node name="BG" type="ColorRect" parent="Sell/Background/ChatBox"]
+z_index = -1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 1104.0
+offset_bottom = 192.0
+mouse_filter = 2
+color = Color(0.396078, 0.262745, 0.129412, 1)
+
+[node name="Money" type="ColorRect" parent="Sell/Background"]
+z_index = 1
+layout_mode = 0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 344.0
+offset_bottom = 144.0
+mouse_filter = 2
+color = Color(0.845073, 0.675418, 0.453047, 1)
+
+[node name="BG" type="ColorRect" parent="Sell/Background/Money"]
+z_index = -1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 304.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.396078, 0.262745, 0.129412, 1)
+
+[node name="Quantity" type="ColorRect" parent="Sell/Background"]
+visible = false
+z_index = 999
+layout_mode = 0
+offset_left = 784.0
+offset_top = 320.0
+offset_right = 1096.0
+offset_bottom = 448.0
+mouse_filter = 2
+color = Color(0.845073, 0.675418, 0.453047, 1)
+
+[node name="BG" type="ColorRect" parent="Sell/Background/Quantity"]
+z_index = -1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 320.0
+offset_bottom = 136.0
+mouse_filter = 2
+color = Color(0.396078, 0.262745, 0.129412, 1)
+
+[node name="Money" type="Label" parent="Sell"]
+z_index = 4096
+layout_mode = 0
+offset_left = 56.0
+offset_top = 64.0
+offset_right = 352.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("4_eviww")
+theme_override_font_sizes/font_size = 40
+text = "Money:2166,3B G"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sell"]
+z_index = 9
+layout_mode = 0
+offset_left = 56.0
+offset_top = 448.0
+offset_right = 1080.0
+offset_bottom = 560.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_eviww")
+theme_override_font_sizes/normal_font_size = 50
+fit_content = true
+
+[node name="OK" type="Button" parent="Sell"]
+visible = false
+z_index = 4096
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 276.0
+offset_top = 544.0
+offset_right = 434.0
+offset_bottom = 592.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_3btes")
+theme_override_font_sizes/font_size = 30
+text = "YES
+"
+
+[node name="Nope" type="Button" parent="Sell"]
+visible = false
+z_index = 4096
+layout_mode = 0
+offset_left = 720.0
+offset_top = 564.0
+offset_right = 878.0
+offset_bottom = 612.0
+theme = ExtResource("3_2b0u6")
+theme_override_font_sizes/font_size = 30
+text = "No
+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Sell"]
 z_index = 9
 offset_left = 440.0
 offset_top = 40.0
@@ -389,60 +730,13 @@ size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Sell/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 120
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-z_index = 9
-offset_left = 64.0
-offset_top = 448.0
-offset_right = 1088.0
-offset_bottom = 560.0
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("4_eviww")
-theme_override_font_sizes/normal_font_size = 50
-fit_content = true
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
-offset_right = 1154.0
-offset_bottom = 650.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
-
-[node name="anim" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fsdhe")
-}
-
-[node name="Money" type="Label" parent="."]
-visible = false
-z_index = 4096
-offset_left = 56.0
-offset_top = 64.0
-offset_right = 352.0
-offset_bottom = 115.0
-theme_override_fonts/font = ExtResource("4_eviww")
-theme_override_font_sizes/font_size = 40
-text = "Money:2166,3B G"
-horizontal_alignment = 1
-
-[node name="Inbag" type="Label" parent="."]
-visible = false
-z_index = 4096
-offset_left = 56.0
-offset_top = 328.0
-offset_right = 352.0
-offset_bottom = 379.0
-theme_override_fonts/font = ExtResource("4_eviww")
-theme_override_font_sizes/font_size = 40
-text = "In Bag: 0"
-horizontal_alignment = 1
-
-[node name="QuantityBox" type="Control" parent="."]
+[node name="QuantityBox" type="Control" parent="Sell"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -450,7 +744,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="Up" type="Button" parent="QuantityBox"]
+[node name="Up" type="Button" parent="Sell/QuantityBox"]
 z_index = 4096
 layout_mode = 0
 offset_left = 803.0
@@ -462,7 +756,7 @@ theme_override_font_sizes/font_size = 60
 text = "^"
 flat = true
 
-[node name="Down" type="Button" parent="QuantityBox"]
+[node name="Down" type="Button" parent="Sell/QuantityBox"]
 z_index = 4096
 layout_mode = 0
 offset_left = 834.0
@@ -475,7 +769,7 @@ theme_override_font_sizes/font_size = 60
 text = "^"
 flat = true
 
-[node name="Quantity" type="Label" parent="QuantityBox"]
+[node name="Quantity" type="Label" parent="Sell/QuantityBox"]
 z_index = 4096
 layout_mode = 0
 offset_left = 791.0
@@ -488,7 +782,7 @@ text = "x3
 "
 horizontal_alignment = 1
 
-[node name="Cost" type="Label" parent="QuantityBox"]
+[node name="Cost" type="Label" parent="Sell/QuantityBox"]
 z_index = 4096
 layout_mode = 0
 offset_left = 880.0
@@ -500,7 +794,9 @@ theme_override_font_sizes/font_size = 50
 text = "900G"
 horizontal_alignment = 2
 
-[connection signal="pressed" from="Accept" to="." method="_on_accept_pressed"]
-[connection signal="pressed" from="Cancel" to="." method="_on_cancel_pressed"]
-[connection signal="pressed" from="QuantityBox/Up" to="." method="_on_up_pressed"]
-[connection signal="pressed" from="QuantityBox/Down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="Case/Sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="Case/Buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="Buy/QuantityBox/Up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="Buy/QuantityBox/Down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="Buy/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="Buy/Cancel" to="." method="_on_cancel_pressed"]
