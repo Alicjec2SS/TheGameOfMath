@@ -10,11 +10,17 @@ extends CanvasLayer
 #amount = -1 is infinity
 
 var cur_item_info:Array = [null,null,null]
+var will_sell_item:Array  = [null,null]
 var cur_will_buy_quantity = 1
+var cur_will_sell_quantity = 1
 var merged_inv
+
+
 #	cur_item_info[0] = itemID
 #cur_item_info[2] = price
 #cur_item_info[1] = amount
+#will_sell_item[0] = itemID
+#will_sell_item[1] = price
 
 
 
@@ -126,8 +132,8 @@ func _on_accept_pressed():
 
 func _on_down_pressed():
 	cur_will_buy_quantity = max(1,cur_will_buy_quantity-1)
-	$QuantityBox/Quantity.text = "X" + str(cur_will_buy_quantity)
-	$QuantityBox/Cost.text = format_short_number(cur_will_buy_quantity * cur_item_info[2]) + " G"
+	$Buy/QuantityBox/Quantity.text = "X" + str(cur_will_buy_quantity)
+	$Buy/QuantityBox/Cost.text = format_short_number(cur_will_buy_quantity * cur_item_info[2]) + " G"
 
 func _on_up_pressed():
 	if cur_item_info[1] >= 0:
@@ -137,8 +143,8 @@ func _on_up_pressed():
 	else:
 		cur_will_buy_quantity = min(floor(global.playerData.money / abs(cur_item_info[2])), 
 								cur_will_buy_quantity + 1)
-	$QuantityBox/Quantity.text = "X" + str(cur_will_buy_quantity)
-	$QuantityBox/Cost.text = format_short_number(cur_will_buy_quantity * cur_item_info[2]) + " G"
+	$Buy/QuantityBox/Quantity.text = "X" + str(cur_will_buy_quantity)
+	$Buy/QuantityBox/Cost.text = format_short_number(cur_will_buy_quantity * cur_item_info[2]) + " G"
 
 ##
 ##
@@ -162,9 +168,23 @@ func _ready():
 func _process(delta):
 	start_buy()
 	start_sell()
+	if $Case.visible or ($Buy.visible  or $Sell.visible):
+		global.can_move = false
+		global.is_interacting = true 
 ##end Manager
 
 ##sell dialog
+
+
+func remove_k_items(inventory: Array, item_to_remove: Variant, k: int) -> void:
+	var removed := 0
+	for i in range(inventory.size() - 1, -1, -1):  # Duyệt ngược để tránh lệch index khi remove
+		if inventory[i] == item_to_remove:
+			inventory.remove_at(i)
+			removed += 1
+			if removed >= k:
+				break
+
 
 func merge_inventory(inventory_array: Array) -> Dictionary:
 	'''Nhận vào một array chứa các vật phẩm đã được chuyển đổi thành resource file và thu gọn nó 
@@ -204,7 +224,10 @@ func _get_player_inventory():
 	var temp = []
 	for i in global.playerData.inventory:
 		temp.append(EffectManager.get_item(i))
-		
+	
+	for i in sell_slots.get_children():
+		i.queue_free()
+	
 	merged_inv = merge_inventory(temp)
 	for data in merged_inv.values():
 		var new_slot = ItemSlot.instantiate()
@@ -220,7 +243,7 @@ func _get_player_inventory():
 			icon_node.position = Vector2(16, 16)
 
 		sell_slots.add_child(new_slot)
-	#slots.add_child(ItemSlot.instantiate())
+	sell_slots.add_child(ItemSlot.instantiate())
 
 	await get_tree().process_frame
 
@@ -229,6 +252,13 @@ func _get_data_selling(itemID,amount,price):
 	$Sell/RichTextLabel.text = "Huh?" + conv.name + "?, Kinda great. How many do you want to sell?"
 	$Sell/Background/Quantity.show()
 	$Sell/QuantityBox.show()
+	$Sell/OK.show()
+	$Sell/Nope.show()
+	cur_will_sell_quantity = 1
+	will_sell_item[0] = itemID
+	will_sell_item[1] = price
+	$Sell/QuantityBox/Quantity.text = "X" + str(cur_will_sell_quantity) 
+	$Sell/QuantityBox/Cost.text = format_short_number(cur_will_sell_quantity * will_sell_item[1]) + " G"
 
 func start_sell():
 	var mini_UI = UI.get_node("Mini")
@@ -240,6 +270,40 @@ func start_sell():
 		$Sell/RichTextLabel.text = sell_greeting
 	$Sell/Money.text = "Money: " + str(global.playerData.money) + " G"
 	
+	
+func _on_up_s_pressed():
+	var max_quantity = global.playerData.inventory.count(will_sell_item[0])
+	cur_will_sell_quantity = min(max_quantity, cur_will_sell_quantity + 1)
+	
+	$Sell/QuantityBox/Quantity.text = "X" + str(cur_will_sell_quantity)
+	$Sell/QuantityBox/Cost.text = format_short_number(cur_will_sell_quantity * will_sell_item[1]) + " G"
 
 
+func _on_down_s_pressed():
+	cur_will_sell_quantity = max(1,cur_will_sell_quantity-1)
+	$Sell/QuantityBox/Quantity.text = "X" + str(cur_will_sell_quantity)
+	$Sell/QuantityBox/Cost.text = format_short_number(cur_will_sell_quantity * will_sell_item[1]) + " G"
 
+
+func _on_ok_pressed():
+	if will_sell_item[0] in global.playerData.using_equips:
+		var Index = global.playerData.using_equips.find(will_sell_item[0])
+		if Index != -1:
+			global.playerData.using_equips[Index] = null
+	else:
+		remove_k_items(global.playerData.inventory,will_sell_item[0],cur_will_sell_quantity)
+		global.playerData.money += cur_will_sell_quantity * will_sell_item[1]
+		$Sell/OK.hide()
+		$Sell/Nope.hide()
+		$Sell/Background/Quantity.hide()
+		$Sell/QuantityBox.hide()
+		$Sell/RichTextLabel.text = "Okay, i will pay " +  str(cur_will_sell_quantity * will_sell_item[1]) 
+		$Sell/RichTextLabel.text += "them" if cur_will_sell_quantity > 0 else "it"
+		$Sell/RichTextLabel.text += ". Anything else?"
+	will_sell_item = [null,null]
+	cur_will_sell_quantity=1
+	_get_player_inventory()
+
+	
+func _on_nope_pressed():
+	pass # Replace with function body.

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyqraacmeopbl"]
+[gd_scene load_steps=9 format=3 uid="uid://dyqraacmeopbl"]
 
 [ext_resource type="Script" path="res://scripts/UI_scene/Big/sell_dialog.gd" id="1_v1cas"]
 [ext_resource type="Theme" uid="uid://blvj35xg0ltfr" path="res://settings/equip.tres" id="2_3btes"]
 [ext_resource type="Theme" uid="uid://bu30yd48r1mvj" path="res://settings/unequip.tres" id="3_2b0u6"]
 [ext_resource type="FontFile" uid="uid://csfxe4gpjf0nh" path="res://fonts/superstar_memesbruh03.ttf" id="4_eviww"]
+[ext_resource type="Script" path="res://scripts/globals/ScrollContainer.gd" id="5_gitnp"]
 
 [sub_resource type="Animation" id="Animation_ug2x8"]
 length = 0.001
@@ -401,6 +402,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+script = ExtResource("5_gitnp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Buy/ScrollContainer"]
 layout_mode = 2
@@ -721,6 +723,7 @@ text = "No
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Sell"]
 z_index = 9
+layout_mode = 0
 offset_left = 440.0
 offset_top = 40.0
 offset_right = 1112.0
@@ -729,6 +732,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+script = ExtResource("5_gitnp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Sell/ScrollContainer"]
 layout_mode = 2
@@ -744,7 +748,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="Up" type="Button" parent="Sell/QuantityBox"]
+[node name="Up_S" type="Button" parent="Sell/QuantityBox"]
 z_index = 4096
 layout_mode = 0
 offset_left = 803.0
@@ -756,7 +760,7 @@ theme_override_font_sizes/font_size = 60
 text = "^"
 flat = true
 
-[node name="Down" type="Button" parent="Sell/QuantityBox"]
+[node name="Down_S" type="Button" parent="Sell/QuantityBox"]
 z_index = 4096
 layout_mode = 0
 offset_left = 834.0
@@ -800,3 +804,7 @@ horizontal_alignment = 2
 [connection signal="pressed" from="Buy/QuantityBox/Down" to="." method="_on_down_pressed"]
 [connection signal="pressed" from="Buy/Accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="Buy/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="Sell/OK" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="Sell/Nope" to="." method="_on_nope_pressed"]
+[connection signal="pressed" from="Sell/QuantityBox/Up_S" to="." method="_on_up_s_pressed"]
+[connection signal="pressed" from="Sell/QuantityBox/Down_S" to="." method="_on_down_s_pressed"]
