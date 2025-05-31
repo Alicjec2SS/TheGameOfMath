@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bd0g3vsyo2gc0"]
+
+[ext_resource type="StyleBox" uid="uid://bwa005carm78b" path="res://settings/ItemSlot.tres" id="1_5pmr5"]
+[ext_resource type="StyleBox" uid="uid://bkn62cudvxjfp" path="res://settings/ItemSlotfocus.tres" id="1_jt0y0"]
+
+[resource]
+Button/styles/focus = ExtResource("1_jt0y0")
+Button/styles/hover = ExtResource("1_5pmr5")
+Button/styles/normal = ExtResource("1_5pmr5")
+Button/styles/pressed = ExtResource("1_5pmr5")

@@ -29,6 +29,7 @@ var merged_inv
 @onready var ItemSlot = preload("res://scenes/UI/sell_dialog_item_slot.tscn")
 @onready var UI = $"../UI"
 @onready var anim = $Buy/anim
+@onready var sell_anim = $Sell/anim
 
 #save-load
 @export var sellerID:int
@@ -81,9 +82,13 @@ func _update_inventory():
 func start_buy():
 	var mini_UI = UI.get_node("Mini")
 	var mini_UI_anim = UI.get_node("anim")
-	if self.get_node("Buy").visible and mini_UI.visible:
-		mini_UI_anim.play("end")
+	if not self.get_node("Buy").visible and not $Sell.visible:
+		if mini_UI.visible:
+			mini_UI_anim.play("end")
 		anim.play("start")
+		$Buy.show()
+		$Buy/Background.show()
+		$Buy/ScrollContainer.show()
 		await get_tree().create_timer(1).timeout
 		$Buy/RichTextLabel.text = buy_greeting
 	$Buy/Money.text = "Money: " + str(global.playerData.money) + " G"
@@ -113,21 +118,22 @@ func _get_data(itemID,amount,price):
 	$Buy/Inbag.text = "In Bag: " + str(global.playerData.inventory.count(itemID))
 	
 func _on_cancel_pressed():
-	$RichTextLabel.text = buy_greeting
-	$Accept.hide()
-	$Cancel.hide()
-	$QuantityBox.hide()
+	$Buy/RichTextLabel.text = buy_greeting
+	$Buy/Accept.hide()
+	$Buy/Cancel.hide()
+	$Buy/QuantityBox.hide()
+	$Buy/Background/Quantity.hide()
 
 func _on_accept_pressed():
 	global.playerData.inventory.append(cur_item_info[0])
 	var cost = cur_item_info[2] * int(cur_will_buy_quantity)
 	global.playerData.money -= cost
 	print("purchased")
-	$Accept.hide()
-	$Cancel.hide()
-	$QuantityBox.hide()
-	$Background/Quantity.hide()
-	$RichTextLabel.text = "It costs all " + str(cost) +"G . Anything else?"
+	$Buy/Accept.hide()
+	$Buy/Cancel.hide()
+	$Buy/QuantityBox.hide()
+	$Buy/Background/Quantity.hide()
+	$Buy/RichTextLabel.text = "It costs all " + str(cost) +"G . Anything else?"
 	_update_inventory()
 
 func _on_down_pressed():
@@ -151,14 +157,17 @@ func _on_up_pressed():
 ##end buy dialog
 
 ##Manager
+func _start_sell_dialog():
+	$Case/anim.show()
+
 func _on_buy_pressed():
-	$Case.hide()
-	$Buy.show()
+	$Case/anim.play("end")
+	await get_tree().create_timer(1).timeout
 	start_buy()
 
 func _on_sell_pressed():
-	$Case.hide()
-	$Sell.show()
+	$Case/anim.play("end")
+	await get_tree().create_timer(1).timeout
 	start_sell()
 
 func _ready():
@@ -166,16 +175,14 @@ func _ready():
 	_get_player_inventory()
 
 func _process(delta):
-	start_buy()
-	start_sell()
 	if $Case.visible or ($Buy.visible  or $Sell.visible):
 		global.can_move = false
 		global.is_interacting = true 
 ##end Manager
 
+
+
 ##sell dialog
-
-
 func remove_k_items(inventory: Array, item_to_remove: Variant, k: int) -> void:
 	var removed := 0
 	for i in range(inventory.size() - 1, -1, -1):  # Duyệt ngược để tránh lệch index khi remove
@@ -263,14 +270,16 @@ func _get_data_selling(itemID,amount,price):
 func start_sell():
 	var mini_UI = UI.get_node("Mini")
 	var mini_UI_anim = UI.get_node("anim")
-	if self.get_node("Sell").visible and mini_UI.visible:
-		mini_UI_anim.play("end")
-		#anim.play("start")
+	if not $Sell.visible and not $Buy.visible:
+		if mini_UI.visible:
+			mini_UI_anim.play("end")
+		sell_anim.play("start")
+		$Sell.show()
+		$Sell/Background.show()
 		await get_tree().create_timer(1).timeout
 		$Sell/RichTextLabel.text = sell_greeting
 	$Sell/Money.text = "Money: " + str(global.playerData.money) + " G"
-	
-	
+
 func _on_up_s_pressed():
 	var max_quantity = global.playerData.inventory.count(will_sell_item[0])
 	cur_will_sell_quantity = min(max_quantity, cur_will_sell_quantity + 1)
@@ -304,6 +313,10 @@ func _on_ok_pressed():
 	cur_will_sell_quantity=1
 	_get_player_inventory()
 
-	
 func _on_nope_pressed():
-	pass # Replace with function body.
+	$Sell/RichTextLabel.text = sell_greeting
+	$Sell/OK.hide()
+	$Sell/Nope.hide()
+	$Sell/QuantityBox.hide()
+	$Sell/Background/Quantity.hide()
+##End sell_dialog
