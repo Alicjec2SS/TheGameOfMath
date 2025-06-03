@@ -927,6 +927,7 @@ level_question = 5
 [node name="UI" parent="." instance=ExtResource("19_cujy5")]
 
 [node name="SellDialog" parent="." instance=ExtResource("20_8nqvi")]
+visible = false
 
 [connection signal="body_entered" from="InteractFinder" to="InteractFinder" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractFinder" to="InteractFinder" method="_on_body_exited"]

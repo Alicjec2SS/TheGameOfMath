@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+
 @export var buy_greeting:String
 @export var sell_greeting:String
 @export_range(0.0,1.0) var resale_value_percentage: float # 0.0 to 1.0
@@ -123,6 +124,8 @@ func _on_cancel_pressed():
 	$Buy/Cancel.hide()
 	$Buy/QuantityBox.hide()
 	$Buy/Background/Quantity.hide()
+	$Buy/Inbag.hide()
+	$Buy/Background/InBag.hide()
 
 func _on_accept_pressed():
 	global.playerData.inventory.append(cur_item_info[0])
@@ -157,27 +160,59 @@ func _on_up_pressed():
 ##end buy dialog
 
 ##Manager
-func _start_sell_dialog():
-	$Case/anim.show()
+
+#the function is used to active the sell engine
+func _start_sell_dialog(p_buy_greeting,p_sell_greeting,p_resale_value_percentage,p_items):
+	#reset
+	
+	buy_greeting = p_buy_greeting
+	sell_greeting = p_sell_greeting
+	resale_value_percentage = p_resale_value_percentage
+	items = p_items
+	
+	_update_inventory()
+	_get_player_inventory()
+	
+	
+	self.show()
+	$Case/anim.play("start")
+	$"../UI/anim".play("end")
 
 func _on_buy_pressed():
 	$Case/anim.play("end")
 	await get_tree().create_timer(1).timeout
 	start_buy()
+	$Quit_Box/anim.play("start")
 
 func _on_sell_pressed():
 	$Case/anim.play("end")
 	await get_tree().create_timer(1).timeout
 	start_sell()
+	$Quit_Box/anim.play("start")
 
 func _ready():
 	_update_inventory()
 	_get_player_inventory()
 
 func _process(delta):
-	if $Case.visible or ($Buy.visible  or $Sell.visible):
+	if self.visible:
 		global.can_move = false
 		global.is_interacting = true 
+	else:
+		global.can_move = true
+		global.is_interacting = false 
+
+
+func _on_quit_pressed():
+	$Buy/anim.play("end")
+	$Sell/anim.play("end")
+	$Quit_Box/anim.play("end")
+	await get_tree().create_timer(1).timeout
+	$Buy.hide()
+	$Sell.hide()
+	self.hide()
+	
+
 ##end Manager
 
 
@@ -320,3 +355,6 @@ func _on_nope_pressed():
 	$Sell/QuantityBox.hide()
 	$Sell/Background/Quantity.hide()
 ##End sell_dialog
+
+
+

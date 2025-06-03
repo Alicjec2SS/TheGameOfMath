@@ -4,12 +4,12 @@
 
 [resource]
 script = ExtResource("1_hmmkv")
-position = Vector2(54.4194, 291.056)
+position = Vector2(234, 75)
 current_map_path = "res://scenes/levels/level2.tscn"
 money = 12972
 defeated_ID_player = [172, 911]
-time = 90.9408
-day = 15
+time = 97.2923
+day = 16
 HP = 83
 DMG = 26
 EXP = 624100

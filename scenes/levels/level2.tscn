@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqpl7jf05kogi"]
+[gd_scene load_steps=8 format=3 uid="uid://dqpl7jf05kogi"]
 
 [ext_resource type="Script" path="res://scripts/Worlds_Setups/level2.gd" id="1_34b1q"]
 [ext_resource type="PackedScene" uid="uid://cfxf1cnegipmh" path="res://scenes/globals/player.tscn" id="2_iocg6"]
 [ext_resource type="TileSet" uid="uid://co5oog8o4sx73" path="res://settings/tilemap.tres" id="3_bxvhu"]
 [ext_resource type="PackedScene" uid="uid://cs1cxj8dle53c" path="res://scenes/globals/teleporter.tscn" id="4_jysi1"]
 [ext_resource type="PackedScene" uid="uid://bm8yuyjllpkmh" path="res://scenes/globals/day_night_engine.tscn" id="5_hewsv"]
+[ext_resource type="PackedScene" uid="uid://bjnpk3d0gnjrd" path="res://scenes/things/NPCs/seller.tscn" id="6_a7pyv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cd5tk"]
 
@@ -40,6 +41,7 @@ position = Vector2(35, 53)
 scale = Vector2(10000, 10000)
 
 [node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Area2D" parent="Entities" instance=ExtResource("4_jysi1")]
 position = Vector2(227, 60)
@@ -49,3 +51,10 @@ next_map_pos = Vector2(251, 137)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Area2D"]
 position = Vector2(6, 0)
 shape = SubResource("RectangleShape2D_cd5tk")
+
+[node name="Seller" parent="Entities" instance=ExtResource("6_a7pyv")]
+position = Vector2(147, -47)
+dialog_tree = ""
+buy_greeting = "Hello, what do u wanna buy?"
+sell_greeting = "Tryna sell something?"
+resale_value_percentage = 0.75

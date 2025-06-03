@@ -1,0 +1,75 @@
+[gd_scene load_steps=15 format=3 uid="uid://bjnpk3d0gnjrd"]
+
+[ext_resource type="Texture2D" uid="uid://k44d6gxx0obi" path="res://assets/Entities/TestCharacter/gunslinger_1.png" id="1_2onur"]
+[ext_resource type="Script" path="res://scripts/things/NPC/seller.gd" id="1_m2mlw"]
+[ext_resource type="Texture2D" uid="uid://ba1nv8lth1qbv" path="res://assets/Entities/TestCharacter/gunslinger_2.png" id="2_42tbh"]
+[ext_resource type="Texture2D" uid="uid://vk6tik5opdb7" path="res://assets/Entities/TestCharacter/gunslinger_3.png" id="3_tguw0"]
+[ext_resource type="Texture2D" uid="uid://cidsfnktiwcb2" path="res://assets/Entities/TestCharacter/gunslinger_4.png" id="4_jdjib"]
+[ext_resource type="Texture2D" uid="uid://cj4mbtmij25dr" path="res://assets/Entities/TestCharacter/gunslinger_5.png" id="5_ero17"]
+[ext_resource type="Texture2D" uid="uid://rw0w04mrt82u" path="res://assets/Player/Shadow.png" id="6_tyfy5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r63av"]
+atlas = ExtResource("1_2onur")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do65m"]
+atlas = ExtResource("2_42tbh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hfo8"]
+atlas = ExtResource("3_tguw0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhcpt"]
+atlas = ExtResource("4_jdjib")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hacti"]
+atlas = ExtResource("5_ero17")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7en3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r63av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do65m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hfo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhcpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hacti")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jxyxf"]
+radius = 6.0
+height = 20.0
+
+[node name="Seller" type="CharacterBody2D"]
+z_index = 2
+y_sort_enabled = true
+script = ExtResource("1_m2mlw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_o7en3")
+animation = &"0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jxyxf")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(-1, 4)
+texture = ExtResource("6_tyfy5")

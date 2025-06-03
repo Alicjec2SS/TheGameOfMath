@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var after_battle_dialog_tree="gaylordchatting"
 @export var is_battle=false
 @export var battle_ID_self=911
-@export var trantroi="Ohf**kuaresostrong"
+@export var trantroi="Oh f**k u are so strong"
 @export var health=3
 @export var XP=90
 @export var money=99
@@ -49,7 +49,6 @@ func interact():
 			Dialogic.start(after_battle_dialog_tree)
 		else:
 			Dialogic.start(dialog_tree)
-			
 	else:
 		Dialogic.start(dialog_tree)
 	if not Dialogic.signal_event.is_connected(exit_dialog):

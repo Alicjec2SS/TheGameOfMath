@@ -1542,12 +1542,10 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="Mini" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_top = -300.0
 offset_right = 40.0
-offset_bottom = -260.0
+offset_bottom = 40.0
 script = ExtResource("5_o3o45")
 
 [node name="MP" type="Label" parent="Mini"]
