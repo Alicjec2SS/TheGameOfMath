@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://cpq5tbgwrip22"]
+
+[ext_resource type="Texture2D" uid="uid://ca7fg6f3d7cwj" path="res://assets/VFX/falling_leaves/ELR_SpringlLeaf.png" id="1_1p718"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ksvwr"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_r0q1b"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(0.99537, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7kx40"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.0601852, -296.703), 0.0, 0.0, 0, 0, Vector2(0.99537, 336.264), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75a5x"]
+atlas = ExtResource("1_1p718")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2ib1"]
+atlas = ExtResource("1_1p718")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut4n0"]
+atlas = ExtResource("1_1p718")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4rno"]
+atlas = ExtResource("1_1p718")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq6lb"]
+atlas = ExtResource("1_1p718")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvcfy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75a5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2ib1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut4n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4rno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq6lb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_ksvwr")
+emitting = false
+amount = 5
+lifetime = 0.75
+one_shot = true
+speed_scale = 0.5
+texture = ExtResource("1_1p718")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+gravity = Vector2(0, 400)
+radial_accel_max = 2.0
+radial_accel_curve = SubResource("Curve_r0q1b")
+angle_curve = SubResource("Curve_7kx40")
+anim_speed_max = 5.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_wvcfy")
+frame_progress = 0.728413

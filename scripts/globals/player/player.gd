@@ -22,6 +22,7 @@ var last_state = "down"#đặt last state quyết định anchor cho engine 8 h�
 func ready():
 	self.global_position.x = Transporter.next_pos.x
 	self.global_position.y = Transporter.next_pos.y
+	UI.show()
 
 func move(delta):
 	#thiết lập biến direction thành Vector2 (x,y)

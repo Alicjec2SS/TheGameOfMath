@@ -925,6 +925,7 @@ UI = NodePath("../UI")
 level_question = 5
 
 [node name="UI" parent="." instance=ExtResource("19_cujy5")]
+visible = false
 
 [node name="SellDialog" parent="." instance=ExtResource("20_8nqvi")]
 visible = false

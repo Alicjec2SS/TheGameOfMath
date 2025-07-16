@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cis2vpwlry2fo"]
+
+[ext_resource type="Script" path="res://VFX.gd" id="1_y71b0"]
+[ext_resource type="PackedScene" uid="uid://c4gu5fu56xss7" path="res://scenes/VFX/leaf.tscn" id="2_7aqk8"]
+
+[node name="VFX" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_y71b0")
+direction = Vector2(1, 1)
+leaf_count = 50
+leaf_scene = ExtResource("2_7aqk8")
