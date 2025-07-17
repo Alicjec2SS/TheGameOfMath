@@ -4,12 +4,12 @@
 
 [resource]
 script = ExtResource("1_hmmkv")
-position = Vector2(-6.82968, 684.097)
-current_map_path = "res://scenes/world_levels/begin.tscn"
+position = Vector2(166.006, 78.2772)
+current_map_path = "res://scenes/levels/level1.tscn"
 money = 12972
 defeated_ID_player = [172, 911]
-time = 109.061
-day = 18
+time = 121.455
+day = 20
 HP = 83
 DMG = 26
 EXP = 624100
@@ -25,4 +25,5 @@ waiting_items_effect = Array[int]([])
 add_speed = 0
 speed = 75
 using_equips = [201, 202]
-inventory = Array[int]([5, 201, -16, 7, 67567567, 8998, 55, 202])
+picked_item_id = ["level1_root_Node2D_Items_Item", "Node2D_root_@Node2D@29_Items_Item"]
+inventory = Array[int]([5, 201, -16, 7, 67567567, 8998, 55, 202, 0, 0])

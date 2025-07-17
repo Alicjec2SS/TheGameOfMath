@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://df46k631m2whi"]
+
+[ext_resource type="Script" path="res://Items/inventorySystem/collectable.gd" id="1_atowk"]
+[ext_resource type="FontFile" uid="uid://csfxe4gpjf0nh" path="res://fonts/superstar_memesbruh03.ttf" id="2_uyry8"]
+
+[node name="Item" type="CharacterBody2D"]
+script = ExtResource("1_atowk")
+
+[node name="ClaimedLabel" type="Label" parent="."]
+z_index = 4096
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_uyry8")
+theme_override_font_sizes/font_size = 20
